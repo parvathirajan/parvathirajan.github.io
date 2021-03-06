@@ -1,11 +1,10 @@
 # [parvathirajan.github.io](http://parvathirajan.github.io)
-<!doctype html>
+
 <html>
   <head>
   </head>
   <body>
     <img src="https://raw.githubusercontent.com/parvathirajan/parvathirajan/master/Mine%20Git%20Banner%20npr.png" alt="About Parvathirajan..." height="250">
-    
     <p>Hi there..., Thanks for visiting my page <strong>Parvathirajan.github.io</strong>. Currently I'm working on it.... I'm adding more to it :p </p>
     <br/>
     <br/>

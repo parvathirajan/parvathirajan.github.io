@@ -1,5 +1,5 @@
 # [parvathirajan.github.io](http://parvathirajan.github.io)
-
+<!doctype html>
 <html>
   <head>
   </head>

@@ -1,0 +1,84 @@
+.menu {
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  width: 0%;
+  height: 0px;
+  left: 0;
+  margin-left: 0%;
+  transform: translateY(-50%);
+  align-items: center;
+}
+
+.menu-li {
+  width: 170px;
+  height: 60px;
+}
+
+.menu-button {
+  transition: all 450ms cubic-bezier(0.4, 0.25, 0.3, 1.3);
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  top: 0;
+  left: 125%;
+  transform: translateX(-50%);
+  display: grid;
+  justify-content: center;
+  border: 2px solid #000000;
+  border-radius: 50%;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.menu-button-span {
+  transition: all 400ms cubic-bezier(0.4, 0.25, 0.3, 1.3) 100ms;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 1.5rem;
+  font-weight: 900;
+  line-height: 60px;
+}
+
+.menu-button-span:first-of-type {
+  font-size: 2.5rem;
+  transform: translate(-50%, -50%);
+}
+
+.menu-button-span:last-of-type {
+  transform: translate(-50%, 50%);
+  text-transform: uppercase;
+}
+
+.menu-button:hover {
+  width: 170px;
+  border-radius: 20px;
+  left: 250%;
+}
+
+menu button:hover span:first-of-type {
+  transform: translate(-50%, -150%);
+}
+menu button:hover span:last-of-type {
+  transform: translate(-50%, -50%);
+}
+
+#container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+}
+
+#container > div {
+  width: auto;
+  height: auto;
+}
+
+#switch-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+  }

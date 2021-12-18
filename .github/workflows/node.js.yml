@@ -29,8 +29,8 @@ jobs:
         cache: 'yarn'
       env:
         GITHUB_TOKEN: ${{ secrets.PORTFOLIO_SECRET }}
+    - run: echo ${GITHUB_TOKEN}
     - run: git config --global user.name "Parvathirajan Natarajan"
-    - run: echo ${secrets.PORTFOLIO_SECRET}
     - run: git config --global user.email "parvathi_rajan@hotmail.com"
     - run: yarn
     - name: Deploy

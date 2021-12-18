@@ -194,8 +194,7 @@ header h1 {
 }
 
 .font-trebuchet {
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
 
 #preview {
@@ -365,10 +364,7 @@ header h1 {
   opacity: 1;
 }
 
-.resume-portfolio
-  .portfolio-item
-  .portfolio-item-caption
-  .portfolio-item-caption-content {
+.resume-portfolio .portfolio-item .portfolio-item-caption .portfolio-item-caption-content {
   font-size: 1.5rem;
 }
 

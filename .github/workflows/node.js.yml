@@ -22,15 +22,16 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
+    - run: git config --global user.name "Parvathirajan Natarajan"
+    - run: git config --global user.email "parvathi_rajan@hotmail.com"
+    - run: yarn
+    - run: yarn deploy
+    - name: Deploy
       uses: actions/setup-node@v2
       with:
         target_branch: gh-pages
         node-version: ${{ matrix.node-version }}
         cache: 'yarn'
       env:
-        GITHUB_TOKEN: ${{ secrets.PORTFOLIO_SECRET }}
-    - run: git config --global user.name "Parvathirajan Natarajan"
-    - run: git config --global user.email "parvathi_rajan@hotmail.com"
-    - run: yarn
-    - run: yarn deploy
+        GITHUB_TOKEN: ${{ secrets.GITHUB_REPO_TOKEN }}
 

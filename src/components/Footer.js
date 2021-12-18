@@ -3,7 +3,7 @@ import { basicData } from "./Data";
 export const Footer = () => {
   return (
     <>
-      <footer style={{ height: 300 }}>
+      <footer style={{ height: 260 }}>
         <div className="col-md-12">
           <div className="social-links">
             {basicData.basic_info.social.map((network) => (

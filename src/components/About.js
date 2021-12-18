@@ -7,9 +7,8 @@ import SimpleImageSlider from "react-simple-image-slider";
 
 class About extends Component {
   render() {
-    var profilepic = "images/" + basicData.basic_info.image;
+    var profile_images = basicData.basic_info.images;
     var resumeBasicInfo = resumeData.basic_info;
-    const images = [{ url: profilepic }, { url: profilepic }];
 
     return (
       <section id="resume-about">
@@ -23,8 +22,8 @@ class About extends Component {
                 <span style={{ cursor: "auto" }}>
                   <SimpleImageSlider
                     width={200}
-                    height={"255px"}
-                    images={images}
+                    height={"260px"}
+                    images={profile_images}
                     showBullets={true}
                     showNavs={true}
                     navMargin={-10}

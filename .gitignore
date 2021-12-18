@@ -11,8 +11,3 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-# Prod Build
-build/asset-manifest.json
-build/static
-build/index.html

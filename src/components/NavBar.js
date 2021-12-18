@@ -59,24 +59,24 @@ const buttons = [
   },
 ];
 
-const SimpleBottomNavigation = () => (
-  <BottomNavigation value="0" className="BottomNavigation">
-    {buttons.map((button, j) => (
-      <Link
-        key={j} // eslint-disable-line react/no-array-index-key
-        className="BottomNavigation-link"
-        to={button.name}
-        activeClass="active"
-        spy
-        smooth
-        duration={500}
-        style={{ textDecoration: "none" }}
-      >
-        {button.icon}
-        {button.label}
-      </Link>
-    ))}
-  </BottomNavigation>
-);
-
-export default SimpleBottomNavigation;
+export const SimpleBottomNavigation = () => {
+  return (
+    <BottomNavigation value="0" className="BottomNavigation">
+      {buttons.map((button, j) => (
+        <Link
+          key={j} // eslint-disable-line react/no-array-index-key
+          className="BottomNavigation-link"
+          to={button.name}
+          activeClass="active"
+          spy={true}
+          smooth={true}
+          duration={500}
+          style={{ textDecoration: "none" }}
+        >
+          {button.icon}
+          {button.label}
+        </Link>
+      ))}
+    </BottomNavigation>
+  );
+};

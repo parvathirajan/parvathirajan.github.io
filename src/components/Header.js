@@ -21,8 +21,7 @@ class Header extends Component {
   setTheme() {
     var dataThemeAttribute = "data-theme";
     var body = document.body;
-    var newTheme =
-      body.getAttribute(dataThemeAttribute) === "dark" ? "light" : "dark";
+    var newTheme = body.getAttribute(dataThemeAttribute) === "dark" ? "light" : "dark";
     body.setAttribute(dataThemeAttribute, newTheme);
   }
 
@@ -33,9 +32,7 @@ class Header extends Component {
 
     const HeaderTitleTypeAnimation = React.memo(
       () => {
-        return (
-          <Typical className="title-styles" steps={this.titles} loop={50} />
-        );
+        return <Typical className="title-styles" steps={this.titles} loop={50} />;
       },
       (_props, _prevProp) => true
     );
@@ -43,10 +40,7 @@ class Header extends Component {
     const resumeImg = "images/resume.png";
 
     return (
-      <header
-        id="home"
-        style={{ height: window.innerHeight, display: "block" }}
-      >
+      <header id="home" style={{ height: window.innerHeight, display: "block" }}>
         <div id="container">
           <div>
             <menu className="menu">
@@ -54,20 +48,10 @@ class Header extends Component {
                 <li className="menu-li">
                   <button className="menu-button">
                     <span className="menu-button-span">
-                      <img
-                        height="35px"
-                        src={resumeImg}
-                        alt="Avatar placeholder"
-                        style={{ marginTop: "-7px", marginLeft: "7px" }}
-                      />
+                      <img height="35px" src={resumeImg} alt="Avatar placeholder" style={{ marginTop: "-7px", marginLeft: "7px" }} />
                     </span>
                     <span className="menu-button-span">
-                      <a
-                        style={{ textDecoration: "none", color: "#f39595" }}
-                        href={basicData.basic_info.socialLink.myCV}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
+                      <a style={{ textDecoration: "none", color: "#f39595" }} href={basicData.basic_info.socialLink.myCV} target="_blank" rel="noopener noreferrer">
                         <i className={`fa fa-download`} aria-hidden="true"></i>
                         {"  "}
                         Get CV
@@ -126,11 +110,7 @@ class Header extends Component {
         <div className="row aligner" style={{ height: "90%" }}>
           <div className="col-md-12">
             <div>
-              <span
-                className="iconify header-icon"
-                data-icon="la:laptop-code"
-                data-inline="false"
-              ></span>
+              <span className="iconify header-icon" data-icon="la:laptop-code" data-inline="false"></span>
               <br />
               <h1 className="mb-0">
                 <Typical steps={[name]} wrapper="p" />

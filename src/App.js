@@ -7,12 +7,11 @@ import Skills from "./components/Skills";
 import Expertise from "./components/Expertise";
 import Hobbies from "./components/Hobbies";
 import { Footer } from "./components/Footer";
-import SimpleBottomNavigation from "./components/NavBar";
+import { SimpleBottomNavigation } from "./components/NavBar";
 
 export const App = () => {
   return (
     <div>
-      {/* <Sidebar /> */}
       <Header />
       <About />
       <Projects />

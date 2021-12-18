@@ -17,7 +17,7 @@ class Sidebar extends Component {
     const linksArray = [
       { name: "About", url: "#resume-about" },
       { name: "Skills", url: "#skills" },
-      { name: "Resume", url: "#resume"},
+      { name: "Resume", url: "#resume" },
       {
         name: "Download CV",
         url: basicData.basic_info.socialLink.myCV,

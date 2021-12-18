@@ -18,8 +18,14 @@ export const Footer = () => {
           <div className="copyright py-4 text-center">
             <div className="container">
               <small>
-                &copy; {new Date().getFullYear()} All rights belong to me 😊 <br /> Made with <i className="fa fa-heart" aria-hidden="true"></i> by{" "}
-                <a href={basicData.basic_info.socialLink.github} target="_blank" rel="noreferrer">
+                &copy; {new Date().getFullYear()} All rights belong to me 😊{" "}
+                <br /> Made with{" "}
+                <i className="fa fa-heart" aria-hidden="true"></i> by{" "}
+                <a
+                  href={basicData.basic_info.socialLink.github}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   {basicData.basic_info.name}
                 </a>
               </small>

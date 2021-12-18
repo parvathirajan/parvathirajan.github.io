@@ -15,10 +15,7 @@ const Hobbies = () => (
 
     <div className="resume-hobbies-block-hobbies">
       {hobbies.map((hobby) => (
-        <div
-          key={hobby.name}
-          className="resume-hobbies-block-hobby-container"
-        >
+        <div key={hobby.name} className="resume-hobbies-block-hobby-container">
           <div className="resume-hobbies-block-hobby">
             <Card
               style={{ background: "white", color: "black" }}

@@ -28,7 +28,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'yarn'
       env:
-        GITHUB_TOKEN: ${{ secrets.PORTFOLIO_SECRET }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_REPO_TOKEN }}
     - run: git config --global user.name "Parvathirajan Natarajan"
     - run: git config --global user.email "parvathi_rajan@hotmail.com"
     - run: yarn

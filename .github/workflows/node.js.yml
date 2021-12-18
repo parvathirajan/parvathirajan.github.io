@@ -29,4 +29,6 @@ jobs:
     - run: git config --global user.name "Parvathirajan Natarajan"
     - run: git config --global user.email "parvathi_rajan@hotmail.com"
     - run: yarn
-    - run: yarn deploy
+    - run: yarn build
+    - run: mv build/* .
+

@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import "./App.scss";
 import Header from "./components/Header";
 import About from "./components/About";
@@ -29,11 +29,11 @@ export const ResumePage = () => {
 
 export const App = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<ResumePage />} />
         <Route path="broken" element={<Broken />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 };

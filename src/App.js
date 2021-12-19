@@ -29,10 +29,10 @@ export const ResumePage = () => {
 
 export const App = () => {
   return (
-    <BrowserRouter basename="/">
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Routes>
         <Route path="/" element={<ResumePage />} />
-        <Route path="/*" element={<Broken />} />
+        <Route path="*" element={<Broken />} />
       </Routes>
     </BrowserRouter>
   );

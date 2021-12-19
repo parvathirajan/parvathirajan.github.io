@@ -3,7 +3,7 @@ import { basicData } from "./Data";
 export const Footer = () => {
   return (
     <>
-      <footer style={{ height: 260 }}>
+      <footer style={{ height: 300 }}>
         <div className="col-md-12">
           <div className="social-links">
             {basicData.basic_info.social.map((network) => (
@@ -18,7 +18,7 @@ export const Footer = () => {
           <div className="copyright py-4 text-center">
             <div className="container">
               <small>
-                &copy; {new Date().getFullYear()} All rights belong to me 😊{" "}
+                &copy; {new Date().getFullYear()} All rights belongs to me 😊{" "}
                 <br /> Made with{" "}
                 <i className="fa fa-heart" aria-hidden="true"></i> by{" "}
                 <a

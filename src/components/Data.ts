@@ -248,7 +248,7 @@ export const resumeData = {
       {
         title: "Project Management",
         description:
-          "I have experience with working with project planning. I'm able to work in Agile methodologies such as SCRUM with the inclusion of Various team, Continuous Testing/Delivery, and Jira Boards.",
+          "I have experience in working with project planning. I'm able to work in Agile methodologies such as SCRUM with the inclusion of Various team, Continuous Testing/Delivery, and Jira Boards.",
       },
     ],
   },

@@ -31,11 +31,11 @@ class About extends Component {
                   />
                   <Icon
                     icon={pythonIcon}
-                    style={{ fontSize: "400%", margin: "9% 5% 0 5%" }}
+                    style={{ fontSize: "20px", margin: "9% 5% 0 5%" }}
                   />
                   <Icon
                     icon={awsIcon}
-                    style={{ fontSize: "400%", margin: "9% 5% 0 5%" }}
+                    style={{ fontSize: "20px", margin: "9% 5% 0 5%" }}
                   />
                 </span>
               </div>
@@ -67,7 +67,7 @@ class About extends Component {
                     className="card-body font-trebuchet text-justify ml-3 mr-3"
                     style={{
                       height: "auto",
-                      fontSize: "132%",
+                      fontSize: "120%",
                       lineHeight: "200%",
                     }}
                   >

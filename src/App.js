@@ -1,3 +1,4 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.scss";
 import Header from "./components/Header";
 import About from "./components/About";
@@ -8,8 +9,9 @@ import Expertise from "./components/Expertise";
 import Hobbies from "./components/Hobbies";
 import { Footer } from "./components/Footer";
 import { SimpleBottomNavigation } from "./components/NavBar";
+import { Broken } from "./components/Broken.js";
 
-export const App = () => {
+export const ResumePage = () => {
   return (
     <div>
       <Header />
@@ -22,5 +24,16 @@ export const App = () => {
       <Footer />
       <SimpleBottomNavigation />
     </div>
+  );
+};
+
+export const App = () => {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<ResumePage />} />
+        <Route path="broken" element={<Broken />} />
+      </Routes>
+    </BrowserRouter>
   );
 };

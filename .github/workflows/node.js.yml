@@ -27,14 +27,14 @@ jobs:
         target_branch: gh-pages
         node-version: ${{ matrix.node-version }}
         cache: 'yarn'
-    - name: Setting up Git Name (Parvathirajan Natarajan)
+    - name: Init Name Config (Parvathirajan Natarajan)
       run: git config --global user.name "Parvathirajan Natarajan"
-    - name: Setting up Git Email (parvathi_rajan@hotmail.com)
+    - name: Init Email Config (parvathi_rajan@hotmail.com)
       run: git config --global user.email "parvathi_rajan@hotmail.com"
     - name: Install Dependencies
       run: yarn
     - name: Code Build
-      run: yarn build
+      run: CI=false yarn build
     - name: Deploy
       uses: crazy-max/ghaction-github-pages@v2.5.0
       with:

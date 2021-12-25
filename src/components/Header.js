@@ -63,7 +63,7 @@ class Header extends Component {
                     </span>
                     <span className="menu-button-span">
                       <a
-                        style={{ textDecoration: "none", color: "#f39595" }}
+                        style={{ textDecoration: "none", color: black }}
                         href={basicData.basic_info.socialLink.myCV}
                         target="_blank"
                         rel="noopener noreferrer"

@@ -1,6 +1,6 @@
 .BottomNavigation {
   z-index: 100;
-  width: auto; /*100%*/
+  width: 100%
   position: fixed;
   bottom: 0;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
@@ -10,7 +10,7 @@
   background-color: #808080;
   display: flex;
   flex-direction: row;
-  height: 20px;
+  height: 10px;
   overflow-y: auto;
 }
 
@@ -59,13 +59,4 @@
 .active {
   color: blue;
   font-size: 10px;
-}
-
-.app {
-  font-family: sans-serif;
-  text-align: center;
-  background-color: lightgreen;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
 }

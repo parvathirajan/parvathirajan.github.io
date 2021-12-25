@@ -52,3 +52,12 @@
   color: blue;
   font-size: 10px;
 }
+
+.app {
+  font-family: sans-serif;
+  text-align: center;
+  background-color: lightgreen;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}

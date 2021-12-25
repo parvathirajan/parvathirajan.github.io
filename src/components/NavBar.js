@@ -61,6 +61,7 @@ const buttons = [
 
 export const SimpleBottomNavigation = () => {
   return (
+<div className="app">
     <BottomNavigation value="0" className="BottomNavigation">
       {buttons.map((button, j) => (
         <Link
@@ -77,6 +78,7 @@ export const SimpleBottomNavigation = () => {
           {button.label}
         </Link>
       ))}
-    </BottomNavigation>
+    </BottomNavigation> 
+</div>
   );
 };

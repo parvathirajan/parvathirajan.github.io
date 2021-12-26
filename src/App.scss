@@ -38,7 +38,7 @@ header {
   -webkit-background-size: cover;
   text-align: center;
   overflow: hidden;
-  background-color: #f39595;
+  background-color: #848db8;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -68,7 +68,7 @@ header {
 
 .language {
   font-size: 25px;
-  background-color: #f39595;
+  background-color: #848db8;
   padding-bottom: 10px;
   padding-top: 80px;
 }
@@ -195,7 +195,8 @@ header h1 {
 }
 
 .font-trebuchet {
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 #preview {
@@ -213,15 +214,15 @@ header h1 {
 }
 
 #resume-experience {
-  background: #f39595;
+  background: #848db8;
 }
 
 #resume-hobbies {
-  background: #f39595;
+  background: #848db8;
 }
 
 #resume-education {
-  background: #f39595;
+  background: #848db8;
 }
 
 .experience-icon {
@@ -343,7 +344,7 @@ header h1 {
 }
 
 #resume-portfolio {
-  background: #f39595;
+  background: #848db8;
   padding-bottom: 5%;
 }
 
@@ -365,7 +366,10 @@ header h1 {
   opacity: 1;
 }
 
-.resume-portfolio .portfolio-item .portfolio-item-caption .portfolio-item-caption-content {
+.resume-portfolio
+  .portfolio-item
+  .portfolio-item-caption
+  .portfolio-item-caption-content {
   font-size: 1.5rem;
 }
 

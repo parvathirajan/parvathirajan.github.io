@@ -1,6 +1,6 @@
 {
   "name": "parvy-portfolio",
-  "homepage": "https://parvathirajan.github.io/",
+  "homepage": "https://parvathirajan.github.io",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -16,6 +16,7 @@
     "react-bootstrap": "^1.3.0",
     "react-dom": "^17.0.2",
     "react-ga": "^3.1.2",
+    "react-helmet": "^6.1.0",
     "react-router-dom": "^6.2.1",
     "react-scripts": "^4.0.3",
     "react-scroll": "^1.5.5",

@@ -4,6 +4,7 @@ export const basicData = {
   basic_info: {
     name: "Parvathirajan Natarajan",
     role: "SDE",
+    homePage: "https://parvathirajan.github.io",
     company: "Deloitte India",
     titles: [
       "Software Development Engineer",

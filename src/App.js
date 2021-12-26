@@ -6,7 +6,6 @@ import Projects from "./components/Projects";
 import Skills from "./components/Skills";
 import Expertise from "./components/Expertise";
 import Hobbies from "./components/Hobbies";
-import Meta from "./components/Meta";
 import { Footer } from "./components/Footer";
 import { SimpleBottomNavigation } from "./components/NavBar";
 
@@ -27,10 +26,5 @@ export const ResumePage = () => {
 };
 
 export const App = () => {
-  return (
-    <>
-      <Meta />
-      <ResumePage />
-    </>
-  );
+  return <ResumePage />;
 };

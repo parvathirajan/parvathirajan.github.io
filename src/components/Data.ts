@@ -256,11 +256,11 @@ export const resumeData = {
   experience: [
     {
       company: "Deloitte Shared Services India LLP.",
-      title: "SDE/Contractor",
+      title: "Sr. Consultant",
       description:
-        "Contractor of Deloitte, Permanent Employee of Infinite Computer Solutions Pvt Ltd.",
+        "Initially Joined as a contractor and promoted/joined as a Sr. Consultant from 02/2022.",
       responsibilities: [
-        "Working as a Contractor for Deloitte and as a Software Developer for State Auto Insurance",
+        "Working as a Software Developer for State Auto Insurance",
         "Developing and Enhancing MT & Frontend Layer for Stateauto insurance Claims portal (https://submitaclaim.stateauto.com/)",
         "Collaborate with the Client to get the requirements and to create a proper plan for the process build",
         "Create or Enhance Lambda functions and Services, Frontend Pages",

@@ -97,19 +97,19 @@ export const basicData = {
         class: "devicon-typescript-plain",
         level: "70",
       },
+      // {
+      //   name: "NodeJS",
+      //   class: "devicon-nodejs-plain",
+      //   level: "85",
+      // },
+      // {
+      //   name: "Java",
+      //   class: "devicon-java-plain",
+      //   level: "80",
+      // },
       {
-        name: "NodeJS",
-        class: "devicon-nodejs-plain",
-        level: "85",
-      },
-      {
-        name: "React",
+        name: "ReactJS",
         class: "devicon-react-plain",
-        level: "80",
-      },
-      {
-        name: "Java",
-        class: "devicon-java-plain",
         level: "90",
       },
     ],

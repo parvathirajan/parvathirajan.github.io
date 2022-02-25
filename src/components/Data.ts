@@ -232,7 +232,7 @@ export const resumeData = {
   expertise: {
     icons: [
       {
-        title: "Full-Stack Web Development",
+        title: "Full-Stack App Development",
         description:
           "I have skills and experience to develop full-stack web applications and services in a variety of technologies. My knowledge area for full-stack apps include HTML/CSS/JS, Python, SQL, Serverless (AWS Lambda, API Gateway), ReactJS and etc.,",
       },

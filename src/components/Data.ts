@@ -53,11 +53,11 @@ export const basicData = {
       myCV: "https://bit.ly/3I08jp4",
     },
     images: [
-      { url: "images/about_i1.jpg" },
-      { url: "images/about_i2.jpg" },
-      { url: "images/about_i3.jpg" },
-      { url: "images/about_i4.jpg" },
-      { url: "images/about_i5.jpg" },
+      { url: "images/parvathirajan_i1.jpg" },
+      { url: "images/parvathirajan_i2.jpg" },
+      { url: "images/parvathirajan_i3.jpg" },
+      { url: "images/parvathirajan_i4.jpg" },
+      { url: "images/parvathirajan_i5.jpg" },
     ],
   },
   skills: {

@@ -11,7 +11,7 @@ import VerifiedUser from "@material-ui/icons/VerifiedUser";
 
 import "../css/Navigation.css";
 
-export const Link = (props) => {
+export const Link = (props: any) => {
   const { showLabel, ...rest } = props;
   return <Scroll.Link {...rest} />;
 };

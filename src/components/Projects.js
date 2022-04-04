@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import ProjectDetailsModal from "./ProjectDetailsModal";
 import { resumeData, sectionNames } from "./Data";
 

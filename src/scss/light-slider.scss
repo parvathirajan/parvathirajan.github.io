@@ -210,18 +210,22 @@ $content-background-color: #d7caaa;
   }
   &--moveRight {
     // transform: translate3d(100%, 0, 0);
-    animation: slideFromRight var(--slider-transition-duration) both var(--transition-bezier);
+    animation: slideFromRight var(--slider-transition-duration) both
+      var(--transition-bezier);
   }
   &--moveLeft {
-    animation: slideFromLeft var(--slider-transition-duration) both var(--transition-bezier);
+    animation: slideFromLeft var(--slider-transition-duration) both
+      var(--transition-bezier);
   }
   &--exit {
     z-index: 0;
     &.#{$root-element}--moveLeft {
-      animation: slideToLeft var(--slider-transition-duration) both var(--transition-bezier);
+      animation: slideToLeft var(--slider-transition-duration) both
+        var(--transition-bezier);
     }
     &.#{$root-element}--moveRight {
-      animation: slideToRight var(--slider-transition-duration) both var(--transition-bezier);
+      animation: slideToRight var(--slider-transition-duration) both
+        var(--transition-bezier);
     }
   }
   &--first {
@@ -265,7 +269,8 @@ $content-background-color: #d7caaa;
       overflow: hidden;
       cursor: pointer;
       border: none;
-      transition: transform 0.225s cubic-bezier(0.8, 1.35, 0.75, 1.45), background-color 0.175s ease-out;
+      transition: transform 0.225s cubic-bezier(0.8, 1.35, 0.75, 1.45),
+        background-color 0.175s ease-out;
       &:hover {
         transform: scale(1.2);
       }
@@ -292,7 +297,13 @@ $content-background-color: #d7caaa;
     &:after {
       content: " ";
       position: absolute;
-      right: calc(50% - (#{$cos45} * (var(--organic-arrow-height) + var(--organic-arrow-thickness))) / 2);
+      right: calc(
+        50% -
+          (
+            #{$cos45} * (var(--organic-arrow-height) +
+                  var(--organic-arrow-thickness))
+          ) / 2
+      );
       height: 100%;
       border-radius: var(--organic-arrow-border-radius);
       width: var(--organic-arrow-thickness);
@@ -327,7 +338,13 @@ $content-background-color: #d7caaa;
     &:before,
     &:after {
       right: auto;
-      left: calc(50% - (#{$cos45} * (var(--organic-arrow-height) + var(--organic-arrow-thickness))) / 2);
+      left: calc(
+        50% -
+          (
+            #{$cos45} * (var(--organic-arrow-height) +
+                  var(--organic-arrow-thickness))
+          ) / 2
+      );
     }
     &:before {
       transform-origin: 0 100% 0;

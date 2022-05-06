@@ -50,7 +50,7 @@ export const basicData = {
     ],
     socialLink: {
       github: "https://github.com/parvathirajan",
-      myCV: "https://bit.ly/3I08jp4",
+      myCV: "https://github.com/parvathirajan/parvathirajan/raw/master/Parvathirajan_Natarajan_CV.pdf",
     },
     images: [
       { url: "images/parvathirajan_i1.jpg" },

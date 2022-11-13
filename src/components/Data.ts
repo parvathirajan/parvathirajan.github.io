@@ -153,7 +153,7 @@ export const resumeData = {
   basic_info: {
     salutation: "Hi!",
     description:
-      "👋 I'm Parvathirajan Natarajan. I'm a Software Developer, specializing in Framework development and Cloud technologies with 4+ years of IT experience. Experienced with all stages of the development cycle of Data Analytics and Cloud Migration Projects.",
+      "👋 I'm Parvathirajan Natarajan. I'm a Software Developer, specializing in Framework development and Cloud technologies with 5+ years of IT experience. Experienced with all stages of the development cycle of Data Analytics and Cloud Migration Projects.",
     philosophy:
       "I'm Good in numerous programming languages including Python, Go and good knowledge in SQL, Relational Databases, AWS, Docker, CI/CD, Databricks, Spark, Scala, Apache Airflow, Kafka, etc., Strong background in project management, Agile, and customer relations.",
     preference:

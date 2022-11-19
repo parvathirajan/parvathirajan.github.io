@@ -71,10 +71,6 @@ export const Experience = () => {
     );
   });
 
-  // @ts-ignore
-  console.log(window.document['documentMode'])
-  // @ts-ignore
-  console.log(!!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime))
   return (
     <section id="resume-experience" className="pb-5">
       <div className="col-md-12 mx-auto">

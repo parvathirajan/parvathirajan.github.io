@@ -80,9 +80,7 @@ class Header extends Component {
           </div>
         </div>
         <div id="switch-container">
-          <div
-            style={{ marginTop: "6px", marginRight: "20px", position: "fixed" }}
-          >
+          <div style={{ marginTop: "6px", marginRight: "20px" }}>
             <Switch
               checked={this.state.checked}
               onChange={this.onThemeSwitchChange}

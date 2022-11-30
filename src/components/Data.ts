@@ -39,12 +39,12 @@ export const basicData = {
       },
       {
         name: "facebook",
-        url: "https://www.facebook.com/ParvathiRajan.N",
+        url: "https://www.facebook.com/Parvathirajan.N",
         class: "fab fa-facebook",
       },
       {
         name: "instagram",
-        url: "https://www.instagram.com/parvathi_rajan_steve/",
+        url: "https://www.instagram.com/itsraaajan/",
         class: "fab fa-instagram",
       },
     ],

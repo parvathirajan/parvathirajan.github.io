@@ -44,7 +44,7 @@ export const basicData = {
       },
       {
         name: "instagram",
-        url: "https://www.instagram.com/sraaajan/",
+        url: "https://www.instagram.com/thisisraaajan/",
         class: "fab fa-instagram",
       },
     ],

@@ -194,6 +194,20 @@ export const resumeData = {
         },
       ],
     },
+    {
+      title: "the-mask",
+      startDate: "2023",
+      description:
+        "A package to hide/mask PII information in the JSON object. It can be installed through pip. i.e., pip install the-mask",
+      images: ["images/portfolio/the-mask/p1.png"],
+      url: "https://github.com/parvathirajan/the-mask#readme",
+      technologies: [
+        {
+          class: "devicon-python-plain",
+          name: "Python",
+        },
+      ],
+    },
   ],
   education: [
     {

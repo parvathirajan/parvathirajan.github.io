@@ -35,7 +35,7 @@ export const basicData = {
       {
         name: "twitter",
         url: "https://twitter.com/parvathi_rajan",
-        class: "fab fa-twitter",
+        class: "fa-brands fa-square-x-twitter",
       },
       {
         name: "facebook",

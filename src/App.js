@@ -10,6 +10,7 @@ import { Footer } from "./components/Footer";
 import { SimpleBottomNavigation } from "./components/NavBar";
 
 export const ResumePage = () => {
+
   return (
     <div>
       <Header />

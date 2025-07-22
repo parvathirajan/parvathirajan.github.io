@@ -65,7 +65,6 @@ class Header extends Component {
                       <a
                         style={{ textDecoration: "none", color: "black" }}
                         href={basicData.basic_info.socialLink.myCV}
-                        target="_blank"
                         rel="noopener noreferrer"
                       >
                         <i className={`fa fa-download`} aria-hidden="true"></i>

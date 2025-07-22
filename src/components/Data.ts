@@ -153,11 +153,11 @@ export const resumeData = {
   basic_info: {
     salutation: "Hi!",
     description:
-      "👋 I'm Parvathirajan Natarajan. I am a CS Engineer with more than 6 years of experience. Worked in various domains and specialized in Framework development and Cloud technologies. My career has encompassed various phases of the Software Development Life Cycle (SDLC), including Data Analytics, Product Development, and Cloud Migration projects.",
+      "👋 I'm Parvathirajan Natarajan. I am a CS Engineer with more than 8 years of experience. Worked in various domains and specialized in Framework development and Cloud technologies. My career has encompassed various phases of the Software Development Life Cycle (SDLC), including Data Analytics, Product Development, and Cloud Migration projects.",
     philosophy:
       "I'm Good in numerous programming languages including Python, Go and good knowledge in SQL, Relational Databases, AWS, Docker, CI/CD, Databricks, Spark, Scala, Apache Airflow, Kafka, etc., Strong background in project management, Agile, and customer relations.",
     preference:
-      "Looking for the great opportunity ! Believe in Opportunity makes a man perfect !!",
+      "Looking for the great opportunity! Believe in Opportunity makes a man perfect!!",
   },
   projects: [
     {

@@ -1,52 +1,37 @@
-# This workflow will do a clean install of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
-
-name: CI
+name: CI & Deploy to gh-pages
 
 on:
   push:
-    branches: [main]
-    paths:
-      - 'src/**'
-      - 'public/**'
-      - 'images/**'
-      - 'package.json'
-      - 'yarn.lock'
-  pull_request:
-    branches: [main]
-    paths:
-      - 'src/**'
-      - 'public/**'
-      - 'images/**'
-      - 'package.json'
-      - 'yarn.lock'
+    branches:
+      - main
+  workflow_dispatch: # Optional manual trigger
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
-          target_branch: gh-pages
-          node-version: ${{ matrix.node-version }}
-          cache: "yarn"
-      - name: Init Name Config (Parvathirajan Natarajan)
-        run: git config --global user.name "Parvathirajan Natarajan"
-      - name: Init Email Config (parvathi_rajan@hotmail.com)
-        run: git config --global user.email "parvathi_rajan@hotmail.com"
+          node-version: 18
+          cache: 'yarn'
+
+      - name: Git Config
+        run: |
+          git config --global user.name "Parvathirajan Natarajan"
+          git config --global user.email "parvathi_rajan@hotmail.com"
+
       - name: Install Dependencies
-        run: yarn
-      - name: Code Build
+        run: yarn install --frozen-lockfile
+
+      - name: Build Project
         run: CI=false yarn build
-      - name: Deploy
+
+      - name: Deploy to GitHub Pages
         uses: crazy-max/ghaction-github-pages@v2.5.0
         with:
           target_branch: gh-pages

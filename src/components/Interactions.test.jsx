@@ -19,7 +19,7 @@ beforeEach(() => {
 test("renders the updated portfolio and career details", () => {
   render(<App />);
   expect(
-    screen.getByRole("heading", { name: /Ideas engineered/i })
+    screen.getByRole("heading", { name: /Ideas built/i })
   ).toBeInTheDocument();
   expect(
     screen.getAllByText("Deloitte Touche Tohmatsu India LLP")

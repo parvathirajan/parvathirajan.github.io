@@ -131,7 +131,7 @@ function ProfileMenu() {
         <div className="profile-card-copy">
           <strong>Parvathirajan Natarajan</strong>
           <span>Manager · Technology leader</span>
-          <p>Building thoughtful cloud, data, and engineering experiences.</p>
+          <p>Building cloud, data, and engineering experiences that matter.</p>
           <a href={linkedIn.url} target="_blank" rel="noreferrer">
             View LinkedIn profile ↗
           </a>
@@ -350,7 +350,7 @@ export function App() {
           <div className="hero-copy reveal visible">
             <p className="eyebrow">Manager · Engineer · Developer</p>
             <h1>
-              Ideas engineered
+              Ideas built
               <br />
               for <span>real impact.</span>
             </h1>

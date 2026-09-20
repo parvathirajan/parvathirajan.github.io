@@ -61,8 +61,8 @@ body {
   top: 100%;
   left: 0;
   z-index: 2;
-  width: 520px;
-  min-height: 230px;
+  width: 420px;
+  min-height: 190px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   border: 1px solid var(--line);
@@ -88,12 +88,12 @@ body {
 .profile-card-image {
   width: 100%;
   height: 100%;
-  min-height: 230px;
+  min-height: 190px;
   object-fit: cover;
   object-position: center 35%;
 }
 .profile-card-copy {
-  padding: 24px;
+  padding: 19px;
 }
 .profile-card-copy strong,
 .profile-card-copy span,
@@ -110,7 +110,7 @@ body {
   font-size: 12px;
 }
 .profile-card-copy p {
-  margin: 10px 0;
+  margin: 8px 0;
   color: var(--muted);
   font-size: 13px;
   line-height: 1.4;
@@ -899,8 +899,8 @@ footer a {
   }
   .profile-card {
     left: -6px;
-    width: min(520px, calc(100vw - 48px));
-    grid-template-columns: 0.85fr 1.15fr;
+    width: min(420px, calc(100vw - 48px));
+    grid-template-columns: 1fr 1fr;
   }
   .hero {
     grid-template-columns: 1fr;

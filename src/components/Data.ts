@@ -268,7 +268,7 @@ export const resumeData = {
       title: "Manager",
       description: "Promoted to Manager in June 2026.",
       responsibilities: [],
-      years: "06/2026 - present",
+      years: "05/2026 - present",
       mainTech: [],
       technologies: [],
     },

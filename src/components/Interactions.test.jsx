@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { App } from "../App";
+import { App, buildVaultTopics } from "../App";
 
 class IntersectionObserverMock {
   observe(element) {
@@ -12,6 +12,10 @@ beforeAll(() => {
   globalThis.IntersectionObserver = IntersectionObserverMock;
 });
 
+beforeEach(() => {
+  sessionStorage.clear();
+});
+
 test("renders the updated portfolio and career details", () => {
   render(<App />);
   expect(
@@ -20,8 +24,57 @@ test("renders the updated portfolio and career details", () => {
   expect(
     screen.getAllByText("Deloitte Touche Tohmatsu India LLP")
   ).toHaveLength(2);
-  expect(screen.getByText("06/2026 - present")).toBeInTheDocument();
+  expect(screen.getByText("05/2026 - present")).toBeInTheDocument();
   expect(screen.getAllByText("View project ↗")).toHaveLength(3);
+});
+
+test("unlocks and relocks His Vault with the configured passcode", () => {
+  render(<App />);
+  fireEvent.change(screen.getByLabelText("Passcode"), {
+    target: { value: "12345" },
+  });
+  fireEvent.click(screen.getByRole("button", { name: /Unlock/ }));
+  expect(screen.getByRole("alert")).toHaveTextContent(/doesn.t match/i);
+
+  fireEvent.change(screen.getByLabelText("Passcode"), {
+    target: { value: "00444" },
+  });
+  fireEvent.click(screen.getByRole("button", { name: /Unlock/ }));
+  expect(
+    screen.getByText("Your first topic will appear here.")
+  ).toBeInTheDocument();
+  fireEvent.click(screen.getByRole("button", { name: "Lock vault" }));
+  expect(screen.getByLabelText("Passcode")).toBeInTheDocument();
+});
+
+test("groups downloads and multiple links by topic folder", () => {
+  const topics = buildVaultTopics(
+    {
+      "/data/Cloud Architecture/links.txt":
+        "https://aws.amazon.com\nhttps://example.com/guide\ninvalid",
+    },
+    {
+      "/data/Cloud Architecture/diagram.pdf": "/assets/diagram.pdf",
+      "/data/Cloud Architecture/links.txt": "/assets/links.txt",
+    }
+  );
+
+  expect(topics).toEqual([
+    {
+      name: "Cloud Architecture",
+      links: [
+        { url: "https://aws.amazon.com", label: "aws.amazon.com" },
+        { url: "https://example.com/guide", label: "example.com" },
+      ],
+      files: [
+        {
+          name: "diagram",
+          filename: "diagram.pdf",
+          url: "/assets/diagram.pdf",
+        },
+      ],
+    },
+  ]);
 });
 
 test("switches between light and dark themes", () => {

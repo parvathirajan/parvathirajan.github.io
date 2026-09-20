@@ -1,46 +1,48 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-import Header from "./Header";
-import Projects from "./Projects";
-import { SimpleBottomNavigation } from "./NavBar";
-import { resumeData } from "./Data";
+import { fireEvent, render, screen } from "@testing-library/react";
+import { App } from "../App";
 
-vi.mock("react-awesome-slider", () => ({
-  default: ({ children }) => <div>{children}</div>,
-}));
+class IntersectionObserverMock {
+  observe(element) {
+    element.classList.add("visible");
+  }
+  disconnect() {}
+}
 
-test("theme switch sets the selected theme even if the body is out of sync", () => {
-  document.body.setAttribute("data-theme", "dark");
-  render(<Header />);
-  const toggle = screen.getByLabelText("Dark theme");
-  fireEvent.click(toggle);
-  expect(document.body).toHaveAttribute("data-theme", "dark");
-  fireEvent.click(toggle);
-  expect(document.body).toHaveAttribute("data-theme", "light");
-  expect(screen.getByRole("link", { name: /Get CV/ })).toHaveAttribute("href");
+beforeAll(() => {
+  globalThis.IntersectionObserver = IntersectionObserverMock;
 });
 
-test("project buttons open a named dialog and its close button dismisses it", async () => {
-  render(<Projects />);
-  const title = resumeData.projects[0].title;
-  fireEvent.click(
-    screen.getByRole("button", { name: `View ${title} details` })
-  );
+test("renders the updated portfolio and career details", () => {
+  render(<App />);
   expect(
-    await screen.findByRole("dialog", { name: title })
+    screen.getByRole("heading", { name: /Ideas engineered/i })
   ).toBeInTheDocument();
-  fireEvent.click(
-    screen.getByRole("button", { name: "Close project details" })
-  );
-  await waitFor(() =>
-    expect(screen.queryByRole("dialog")).not.toBeInTheDocument()
-  );
+  expect(
+    screen.getAllByText("Deloitte Touche Tohmatsu India LLP")
+  ).toHaveLength(2);
+  expect(screen.getByText("06/2026 - present")).toBeInTheDocument();
+  expect(screen.getAllByText("View project ↗")).toHaveLength(3);
 });
 
-test("navigation exposes named links with keyboard-accessible destinations", () => {
-  render(<SimpleBottomNavigation />);
-  expect(screen.getByRole("link", { name: "Experience" })).toHaveAttribute(
+test("switches between light and dark themes", () => {
+  render(<App />);
+  fireEvent.click(screen.getByRole("button", { name: "Switch to dark mode" }));
+  expect(document.body).toHaveAttribute("data-theme", "dark");
+  fireEvent.click(screen.getByRole("button", { name: "Switch to light mode" }));
+  expect(document.body).toHaveAttribute("data-theme", "light");
+});
+
+test("provides navigation and social links", () => {
+  render(<App />);
+  expect(screen.getByRole("link", { name: "work" })).toHaveAttribute(
     "href",
-    "#resume-experience"
+    "#work"
   );
-  expect(screen.getAllByRole("link")).toHaveLength(8);
+  expect(screen.getByRole("link", { name: /Download résumé/ })).toHaveAttribute(
+    "href"
+  );
+  expect(screen.getByRole("link", { name: /github/i })).toHaveAttribute(
+    "target",
+    "_blank"
+  );
 });

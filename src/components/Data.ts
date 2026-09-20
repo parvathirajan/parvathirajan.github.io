@@ -53,13 +53,7 @@ export const basicData = {
       github: "https://github.com/parvathirajan",
       myCV: "https://github.com/parvathirajan/parvathirajan/raw/master/Parvathirajan_Natarajan_CV.pdf",
     },
-    images: [
-      { url: "images/parvathirajan_i1.jpg" },
-      { url: "images/parvathirajan_i2.jpg" },
-      { url: "images/parvathirajan_i3.jpg" },
-      { url: "images/parvathirajan_i4.jpg" },
-      { url: "images/parvathirajan_i5.jpg" },
-    ],
+    images: [{ url: "profile.png" }],
   },
   skills: {
     icons: [

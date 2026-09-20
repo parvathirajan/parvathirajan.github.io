@@ -868,6 +868,14 @@ footer {
   color: var(--muted);
   font-size: 13px;
 }
+.footer-rights {
+  display: grid;
+  gap: 4px;
+}
+.footer-rights small {
+  color: var(--muted);
+  font-size: 12px;
+}
 footer a {
   color: var(--text);
   text-decoration: none;

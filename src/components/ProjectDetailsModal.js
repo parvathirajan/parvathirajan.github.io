@@ -1,8 +1,7 @@
 import { Component } from "react";
 import { Modal } from "react-bootstrap";
 import AwesomeSlider from "react-awesome-slider";
-import AwesomeSliderStyles from "../scss/light-slider.scss";
-import AwesomeSliderStyles2 from "../scss/dark-slider.scss";
+
 import "react-awesome-slider/dist/custom-animations/scale-out-animation.css";
 
 class ProjectDetailsModal extends Component {
@@ -33,19 +32,24 @@ class ProjectDetailsModal extends Component {
 
     return (
       <Modal
-        {...this.props}
+        show={this.props.show}
+        onHide={this.props.onHide}
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
         className="modal-inside"
       >
-        <span onClick={this.props.onHide} className="modal-close">
+        <button
+          type="button"
+          aria-label="Close project details"
+          onClick={this.props.onHide}
+          className="modal-close"
+        >
           <i className="fas fa-times fa-3x close-icon"></i>
-        </span>
+        </button>
         <div className="col-md-12">
           <div className="col-md-10 mx-auto" style={{ paddingBottom: "50px" }}>
             <AwesomeSlider
-              cssModule={[AwesomeSliderStyles, AwesomeSliderStyles2]}
               animation="scaleOutAnimation"
               className="slider-image"
             >
@@ -54,9 +58,10 @@ class ProjectDetailsModal extends Component {
           </div>
           <div className="col-md-10 mx-auto">
             <h3 style={{ padding: "5px 5px 0 5px" }}>
-              {data.title}
+              <span id="contained-modal-title-vcenter">{data.title}</span>
               {data.url ? (
                 <a
+                  aria-label={`Open ${data.title}`}
                   href={data.url}
                   target="_blank"
                   rel="noopener noreferrer"

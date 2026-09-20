@@ -51,16 +51,19 @@
   text-transform: uppercase;
 }
 
-.menu-button:hover {
+.menu-button:hover,
+.menu-button:focus-visible {
   width: 170px;
   border-radius: 20px;
   left: 250%;
 }
 
-menu button:hover span:first-of-type {
+.menu-button:hover span:first-of-type,
+.menu-button:focus-visible span:first-of-type {
   transform: translate(-50%, -150%);
 }
-menu button:hover span:last-of-type {
+.menu-button:hover span:last-of-type,
+.menu-button:focus-visible span:last-of-type {
   transform: translate(-50%, -50%);
 }
 

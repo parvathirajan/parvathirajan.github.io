@@ -23,8 +23,8 @@ export const Experience = () => {
         </Badge>
       );
     });
-    var responsibilities = work.responsibilities.map((responsibility, i) => {
-      return <li>{responsibility}</li>;
+    var responsibilities = work.responsibilities.map((responsibility) => {
+      return <li key={responsibility}>{responsibility}</li>;
     });
     return (
       <VerticalTimelineElement
@@ -58,14 +58,18 @@ export const Experience = () => {
         >
           {work.description}
         </p>
-        <br />
-        <b>Responsibilities:</b>
-        <ul
-          className="vertical-timeline-element-subtitle"
-          style={{ textAlign: "left", fontSize: "120%" }}
-        >
-          {responsibilities}
-        </ul>
+        {work.responsibilities.length > 0 && (
+          <>
+            <br />
+            <b>Responsibilities:</b>
+            <ul
+              className="vertical-timeline-element-subtitle"
+              style={{ textAlign: "left", fontSize: "120%" }}
+            >
+              {responsibilities}
+            </ul>
+          </>
+        )}
         <div style={{ textAlign: "left", marginTop: "15px" }}>{tech}</div>
       </VerticalTimelineElement>
     );

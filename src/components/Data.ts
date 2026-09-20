@@ -3,10 +3,11 @@ const systechSolutions = "Systech Solutions Inc.,";
 export const basicData = {
   basic_info: {
     name: "Parvathirajan Natarajan",
-    role: "SDE",
+    role: "Manager",
     homePage: "https://parvathirajan.github.io",
-    company: "Deloitte India",
+    company: "Deloitte Touche Tohmatsu India LLP",
     titles: [
+      "Manager at Deloitte",
       "Software Development Engineer",
       "Data Engineer",
       "Python Developer",
@@ -153,7 +154,7 @@ export const resumeData = {
   basic_info: {
     salutation: "Hi!",
     description:
-      "👋 I'm Parvathirajan Natarajan. I am a CS Engineer with more than 8 years of experience. Worked in various domains and specialized in Framework development and Cloud technologies. My career has encompassed various phases of the Software Development Life Cycle (SDLC), including Data Analytics, Product Development, and Cloud Migration projects.",
+      "👋 I'm Parvathirajan Natarajan. I am a Manager at Deloitte, promoted in June 2026, with a background in computer science and software engineering since 2017. Worked in various domains and specialized in Framework development and Cloud technologies. My career has encompassed various phases of the Software Development Life Cycle (SDLC), including Data Analytics, Product Development, and Cloud Migration projects.",
     philosophy:
       "I'm Good in numerous programming languages including Python, Go and good knowledge in SQL, Relational Databases, AWS, Docker, CI/CD, Databricks, Spark, Scala, Apache Airflow, Kafka, etc., Strong background in project management, Agile, and customer relations.",
     preference:
@@ -269,7 +270,16 @@ export const resumeData = {
   },
   experience: [
     {
-      company: "Deloitte Shared Services India LLP.",
+      company: "Deloitte Touche Tohmatsu India LLP",
+      title: "Manager",
+      description: "Promoted to Manager in June 2026.",
+      responsibilities: [],
+      years: "06/2026 - present",
+      mainTech: [],
+      technologies: [],
+    },
+    {
+      company: "Deloitte Touche Tohmatsu India LLP",
       title: "Sr. Consultant",
       description:
         "Initially Joined as a contractor and promoted/joined as a Sr. Consultant from 02/2022.",
@@ -280,7 +290,7 @@ export const resumeData = {
         "Create or Enhance Lambda functions and Services, Frontend Pages",
         "Carry out quality assurance tests for the Developed Product",
       ],
-      years: "02/2021 - present",
+      years: "02/2021 - 05/2026",
       mainTech: ["Python", "AWS"],
       technologies: [
         "Python",

@@ -67,6 +67,8 @@ export const SimpleBottomNavigation = () => {
           key={j} // eslint-disable-line react/no-array-index-key
           className="BottomNavigation-link"
           to={button.name}
+          href={`#${button.name}`}
+          aria-label={button.label}
           activeClass="active"
           spy={true}
           smooth={true}

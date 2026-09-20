@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import Typical from "react-typical";
 import Switch from "react-switch";
 import { basicData } from "./Data";
@@ -15,15 +15,11 @@ class Header extends Component {
 
   onThemeSwitchChange(checked) {
     this.setState({ checked });
-    this.setTheme();
+    this.setTheme(checked);
   }
 
-  setTheme() {
-    var dataThemeAttribute = "data-theme";
-    var body = document.body;
-    var newTheme =
-      body.getAttribute(dataThemeAttribute) === "dark" ? "light" : "dark";
-    body.setAttribute(dataThemeAttribute, newTheme);
+  setTheme(checked) {
+    document.body.setAttribute("data-theme", checked ? "dark" : "light");
   }
 
   render() {
@@ -31,48 +27,34 @@ class Header extends Component {
     var name = basic_info.name;
     this.titles = basic_info.titles.map((x) => [x.toUpperCase(), 1500]).flat();
 
-    const HeaderTitleTypeAnimation = React.memo(
-      () => {
-        return (
-          <Typical className="title-styles" steps={this.titles} loop={50} />
-        );
-      },
-      (_props, _prevProp) => true
-    );
-
     const resumeImg = "images/resume.png";
 
     return (
-      <header
-        id="home"
-        style={{ height: window.innerHeight, display: "block" }}
-      >
+      <header id="home" style={{ height: "100svh", display: "block" }}>
         <div id="container">
           <div>
             <menu className="menu">
               <ul style={{ listStyleType: "none" }}>
                 <li className="menu-li">
-                  <button className="menu-button">
+                  <a
+                    className="menu-button"
+                    href={basicData.basic_info.socialLink.myCV}
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
                     <span className="menu-button-span">
                       <img
                         height="35px"
                         src={resumeImg}
-                        alt="Avatar placeholder"
+                        alt=""
                         style={{ marginTop: "-7px", marginLeft: "7px" }}
                       />
                     </span>
                     <span className="menu-button-span">
-                      <a
-                        style={{ textDecoration: "none", color: "black" }}
-                        href={basicData.basic_info.socialLink.myCV}
-                        rel="noopener noreferrer"
-                      >
-                        <i className={`fa fa-download`} aria-hidden="true"></i>
-                        {"  "}
-                        Get CV
-                      </a>
+                      <i className={`fa fa-download`} aria-hidden="true"></i>
+                      {"  "}
+                      Get CV
                     </span>
-                  </button>
+                  </a>
                 </li>
               </ul>
             </menu>
@@ -81,6 +63,7 @@ class Header extends Component {
         <div id="switch-container">
           <div style={{ marginTop: "6px", marginRight: "20px" }}>
             <Switch
+              aria-label="Dark theme"
               checked={this.state.checked}
               onChange={this.onThemeSwitchChange}
               offColor="#808080"
@@ -135,7 +118,11 @@ class Header extends Component {
                 <Typical steps={[name]} wrapper="p" />
               </h1>
               <div className="title-container">
-                <HeaderTitleTypeAnimation />
+                <Typical
+                  className="title-styles"
+                  steps={this.titles}
+                  loop={50}
+                />
               </div>
             </div>
           </div>

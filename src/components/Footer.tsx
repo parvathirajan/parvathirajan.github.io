@@ -8,7 +8,12 @@ export const Footer = () => {
           <div className="social-links">
             {basicData.basic_info.social.map((network) => (
               <span key={network.name} className="m-4">
-                <a href={network.url} target="_blank" rel="noopener noreferrer">
+                <a
+                  aria-label={network.name}
+                  href={network.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <i className={network.class}></i>
                 </a>
               </span>

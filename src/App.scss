@@ -1,5 +1,5 @@
-@import "../src/scss/themes/theme-dark.scss";
-@import "../src/scss/themes/theme-light.scss";
+@use "./scss/themes/theme-dark";
+@use "./scss/themes/theme-light";
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200;300&display=swap");
 html {
   font-size: 62.5%;
@@ -51,7 +51,7 @@ header {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   padding: 8px 15px 2px 15px;
   position: relative;
-  z-index: -500;
+  z-index: 0;
   border-top: 5px solid #696969;
   border-radius: 0 0 5px 5px;
   background-color: #696969;
@@ -59,7 +59,7 @@ header {
 }
 
 .resume-skills-tile {
-  background-color: transparentize(#f8f5f4, 0.95);
+  background-color: rgba(#f8f5f4, 0.05);
   padding: 10px 10px 5px 10px;
   width: 100px;
   margin: 5px 0 5px 0;
@@ -441,4 +441,25 @@ footer a:focus {
   font-size: 22px;
   justify-content: center;
   display: flex;
+}
+
+.project-button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.project-button:focus-visible,
+.modal-close:focus-visible,
+.BottomNavigation-link:focus-visible {
+  outline: 3px solid #3266ce;
+  outline-offset: 3px;
+}
+
+.modal-close {
+  border: 0;
+  background: transparent;
 }

@@ -4,21 +4,24 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch: # Optional manual trigger
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v6
         with:
-          node-version: 18
-          cache: 'yarn'
+          node-version: "22"
+          cache: "yarn"
+          cache-dependency-path: yarn.lock
 
       - name: Git Config
         run: |
@@ -28,13 +31,20 @@ jobs:
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
 
+      - name: Type Check
+        run: yarn typecheck
+
+      - name: Test
+        run: yarn test --watchAll=false --runInBand --watchman=false
+
       - name: Build Project
-        run: CI=false yarn build
+        run: yarn build
 
       - name: Deploy to GitHub Pages
-        uses: crazy-max/ghaction-github-pages@v2.5.0
+        uses: crazy-max/ghaction-github-pages@1d6ee9b181a81033a16bd707a1401afa978daab4 # v5.0.0
         with:
           target_branch: gh-pages
           build_dir: build
+          jekyll: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

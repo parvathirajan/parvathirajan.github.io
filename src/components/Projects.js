@@ -25,12 +25,17 @@ class Projects extends Component {
           key={projects.title}
           style={{ cursor: "pointer" }}
         >
-          <span className="portfolio-item">
-            <div className="foto" onClick={() => detailsModalShow(projects)}>
+          <div className="portfolio-item">
+            <button
+              type="button"
+              className="foto project-button"
+              aria-label={`View ${projects.title} details`}
+              onClick={() => detailsModalShow(projects)}
+            >
               <div>
                 <img
                   src={projects.images[0]}
-                  alt="projectImages"
+                  alt={projects.title}
                   style={{
                     marginBottom: 0,
                     paddingBottom: 0,
@@ -41,8 +46,8 @@ class Projects extends Component {
                 <br />
                 <p className="project-title-settings mt-3">{projects.title}</p>
               </div>
-            </div>
-          </span>
+            </button>
+          </div>
         </div>
       );
     });

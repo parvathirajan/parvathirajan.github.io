@@ -4,10 +4,9 @@ import Projects from "./Projects";
 import { SimpleBottomNavigation } from "./NavBar";
 import { resumeData } from "./Data";
 
-jest.mock("react-typical", () => ({ steps }) => <span>{steps[0]}</span>);
-jest.mock("react-awesome-slider", () => ({ children }) => (
-  <div>{children}</div>
-));
+vi.mock("react-awesome-slider", () => ({
+  default: ({ children }) => <div>{children}</div>,
+}));
 
 test("theme switch sets the selected theme even if the body is out of sync", () => {
   document.body.setAttribute("data-theme", "dark");

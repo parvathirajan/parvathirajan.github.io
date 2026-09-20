@@ -1,24 +1,24 @@
 import "../css/broken.scss";
-import Typical from "react-typical";
+import { TypeAnimation } from "react-type-animation";
 
 const Four = () => {
-  return <div class="number">4</div>;
+  return <div className="number">4</div>;
 };
 
 const Zero = () => {
   return (
-    <div class="illustration">
-      <div class="circle" />
-      <div class="clip">
-        <div class="paper">
-          <div class="face">
-            <div class="eyes">
-              <div class="eye eye-left" />
-              <div class="eye eye-right" />
+    <div className="illustration">
+      <div className="circle" />
+      <div className="clip">
+        <div className="paper">
+          <div className="face">
+            <div className="eyes">
+              <div className="eye eye-left" />
+              <div className="eye eye-right" />
             </div>
-            <div class="rosyCheeks rosyCheeks-left" />
-            <div class="rosyCheeks rosyCheeks-right" />
-            <div class="mouth" />
+            <div className="rosyCheeks rosyCheeks-left" />
+            <div className="rosyCheeks rosyCheeks-right" />
+            <div className="mouth" />
           </div>
         </div>
       </div>
@@ -29,25 +29,25 @@ const Zero = () => {
 export const Broken = () => {
   return (
     <>
-      <div class="broken-center">
-        <div class="error">
+      <div className="broken-center">
+        <div className="error">
           <Four />
           <Zero />
           <Four />
         </div>
 
         <div>
-          <Typical
+          <TypeAnimation
             className="title-styles"
-            steps={[
+            sequence={[
               "Oh oh! Looks like you got lost.....",
               "Please go back to HOME Page !!!",
             ]}
-            loop={50}
+            repeat={49}
           />
         </div>
         <a
-          class="link"
+          className="link"
           href="/"
           style={{
             textDecoration: "none",

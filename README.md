@@ -3,7 +3,7 @@
 <h3 align="center"><a href="https://parvathirajan.github.io">https://parvathirajan.github.io</a><h3>
 <h3 align="center"><a href="https://thisisraaajan.netlify.app">https://thisisraaajan.netlify.app</a><h3>
 
-Local development (Node.js 22 and Yarn 1):
+Local development (Node.js 22.22.2+ and Yarn 1):
 
 ```sh
 yarn install --frozen-lockfile
@@ -13,15 +13,17 @@ yarn start
 Validation and production build:
 
 ```sh
+yarn audit
 yarn typecheck
-yarn test --watchAll=false --runInBand --watchman=false
+yarn test
 yarn build
+yarn preview
 ```
 
-Career details are maintained in `src/components/Data.ts`. The production site
-is built into `build/`; pushes to `main` deploy through GitHub Actions after checks pass.
+Vite builds the site into `build/`. Vitest runs the interaction tests. The root
+`index.html` is the entry page; static images and metadata remain in `public/`.
+Career details are maintained in `src/components/Data.ts`.
 
-The Yarn `sass-loader` resolution upgrades Create React App's transitive loader
-from v12 to v16 so it uses Dart Sass's modern JavaScript API. Use Yarn when
-installing dependencies so this override is applied. The loader requires
-Node.js 18.12 or newer; this project uses Node.js 22 in CI.
+Pushes to `main` deploy through GitHub Actions after the audit, type checks,
+tests, and production build pass. Yarn's lockfile is the dependency source of
+truth; use `yarn install --frozen-lockfile` for reproducible installs.

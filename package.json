@@ -4,71 +4,60 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@emotion/react": "^11.10.5",
-    "@emotion/styled": "^11.10.5",
-    "@material-ui/core": "^5.0.0-beta.5",
-    "@material-ui/icons": "^2.0.0",
-    "@reach/router": "^1.3.4",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^7.2.1",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "bootstrap": "^4.5.2",
-    "prettier": "^2.6.2",
-    "react": "^18.2.0",
-    "react-app-polyfill": "^3.0.0",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/material": "^9.4.0",
+    "@mui/icons-material": "^9.4.0",
+    "@iconify/react": "^6.0.2",
+    "@iconify/icons-logos": "^1.2.19",
+    "bootstrap": "^5.3.8",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-awesome-slider": "^4.1.0",
-    "react-bootstrap": "^1.3.0",
-    "react-dom": "^18.2.0",
-    "react-ga": "^3.1.2",
-    "react-router-dom": "^6.2.1",
-    "react-scripts": "5.0.1",
-    "react-scroll": "^1.5.5",
-    "react-simple-image-slider": "^2.3.0",
-    "react-switch": "^5.0.1",
-    "react-typical": "^0.1.3",
-    "react-vertical-timeline-component": "^3.5.2",
-    "sass": "^1.89.2",
-    "typescript": "^4.4.3",
-    "uuid": "^8.3.2"
+    "react-bootstrap": "^2.10.10",
+    "react-scroll": "^1.9.3",
+    "react-simple-image-slider": "^2.4.1",
+    "react-switch": "^7.1.0",
+    "react-type-animation": "^3.2.0",
+    "react-vertical-timeline-component": "^4.0.0",
+    "prop-types": "^15.8.1",
+    "@popperjs/core": "^2.11.8"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "audit": "yarn audit",
     "prettier": "prettier --write .",
-    "deploy": "gh-pages -d build",
-    "typecheck": "tsc --noEmit"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
-    "@iconify/icons-logos": "^1.2.19",
-    "@iconify/react": "^4.0.0",
-    "@types/react-scroll": "^1.8.3",
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
+    "@types/react-scroll": "^1.8.10",
     "@types/react-vertical-timeline-component": "^3.3.2",
-    "gh-pages": "^3.1.0",
-    "postcss-normalize": "10.0.1"
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@vitejs/plugin-react": "^6.1.1",
+    "vite": "^8.3.0",
+    "vitest": "^5.0.1",
+    "jsdom": "^30.1.0",
+    "sass": "^1.104.1",
+    "typescript": "^5.9.3",
+    "prettier": "^3.6.2",
+    "gh-pages": "^6.3.0"
   },
+  "engines": {
+    "node": "^22.22.2 || ^24.15.0 || >=26.0.0"
+  },
+  "packageManager": "yarn@1.22.22",
   "resolutions": {
     "@types/react": "18.3.31",
-    "@types/react-dom": "18.3.7",
-    "sass-loader": "16.0.8"
+    "@types/react-dom": "18.3.7"
   }
 }

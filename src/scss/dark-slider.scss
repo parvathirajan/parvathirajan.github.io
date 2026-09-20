@@ -275,7 +275,8 @@ $content-background-color: #8c8c8c;
       overflow: hidden;
       cursor: pointer;
       border: none;
-      transition: transform 0.225s cubic-bezier(0.8, 1.35, 0.75, 1.45),
+      transition:
+        transform 0.225s cubic-bezier(0.8, 1.35, 0.75, 1.45),
         background-color 0.175s ease-out;
 
       &:hover {
@@ -301,7 +302,9 @@ $content-background-color: #8c8c8c;
     height: var(--organic-arrow-height);
     position: relative;
     display: block;
-    transition: transform 0.2s ease-out 0.125s, opacity 0.2s ease-out;
+    transition:
+      transform 0.2s ease-out 0.125s,
+      opacity 0.2s ease-out;
     &:before,
     &:after {
       content: " ";
@@ -309,15 +312,18 @@ $content-background-color: #8c8c8c;
       right: calc(
         50% -
           (
-            #{$cos45} * (var(--organic-arrow-height) +
-                  var(--organic-arrow-thickness))
-          ) / 2
+            #{$cos45} *
+              (var(--organic-arrow-height) + var(--organic-arrow-thickness))
+          ) /
+          2
       );
       height: 100%;
       border-radius: var(--organic-arrow-border-radius);
       width: var(--organic-arrow-thickness);
       background-color: var(--organic-arrow-color);
-      transition: transform 0.15s ease-out, background-color 0.15s ease-out;
+      transition:
+        transform 0.15s ease-out,
+        background-color 0.15s ease-out;
     }
     &:before {
       transform-origin: 100% 100% 0;
@@ -350,9 +356,10 @@ $content-background-color: #8c8c8c;
       left: calc(
         50% -
           (
-            #{$cos45} * (var(--organic-arrow-height) +
-                  var(--organic-arrow-thickness))
-          ) / 2
+            #{$cos45} *
+              (var(--organic-arrow-height) + var(--organic-arrow-thickness))
+          ) /
+          2
       );
     }
     &:before {

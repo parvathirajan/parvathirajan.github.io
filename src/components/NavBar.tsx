@@ -1,13 +1,13 @@
 import Scroll from "react-scroll";
-import BottomNavigation from "@material-ui/core/BottomNavigation";
-import HomeIcon from "@material-ui/icons/Home";
-import WorkIcon from "@material-ui/icons/Work";
-import FaceIcon from "@material-ui/icons/Face";
-import SchoolIcon from "@material-ui/icons/School";
-import SettingsIcon from "@material-ui/icons/SettingsApplications";
-import ToysIcon from "@material-ui/icons/Toys";
-import CodeIcon from "@material-ui/icons/Code";
-import VerifiedUser from "@material-ui/icons/VerifiedUser";
+import BottomNavigation from "@mui/material/BottomNavigation";
+import HomeIcon from "@mui/icons-material/Home";
+import WorkIcon from "@mui/icons-material/Work";
+import FaceIcon from "@mui/icons-material/Face";
+import SchoolIcon from "@mui/icons-material/School";
+import SettingsIcon from "@mui/icons-material/SettingsApplications";
+import ToysIcon from "@mui/icons-material/Toys";
+import CodeIcon from "@mui/icons-material/Code";
+import VerifiedUser from "@mui/icons-material/VerifiedUser";
 
 import "../css/Navigation.css";
 

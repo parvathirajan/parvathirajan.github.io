@@ -1,5 +1,5 @@
 import { Component } from "react";
-import Typical from "react-typical";
+import { TypeAnimation } from "react-type-animation";
 import Switch from "react-switch";
 import { basicData } from "./Data";
 import "../css/menu.css";
@@ -115,13 +115,13 @@ class Header extends Component {
               ></span>
               <br />
               <h1 className="mb-0">
-                <Typical steps={[name]} wrapper="p" />
+                <TypeAnimation sequence={[name]} wrapper="p" />
               </h1>
               <div className="title-container">
-                <Typical
+                <TypeAnimation
                   className="title-styles"
-                  steps={this.titles}
-                  loop={50}
+                  sequence={this.titles}
+                  repeat={49}
                 />
               </div>
             </div>

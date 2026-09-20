@@ -62,7 +62,7 @@ export const About = () => {
                   ></span>
                 </div>
                 <div
-                  className="card-body font-trebuchet text-justify ml-3 mr-3"
+                  className="card-body font-trebuchet text-justify ms-3 me-3"
                   style={{
                     height: "auto",
                     fontSize: "120%",

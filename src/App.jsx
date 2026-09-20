@@ -107,6 +107,36 @@ function SectionTitle({ eyebrow, title, copy }) {
   );
 }
 
+function ProfileMenu() {
+  const linkedIn = basicData.basic_info.social.find(
+    (social) => social.name === "linkedin"
+  );
+
+  return (
+    <div className="profile-menu">
+      <a
+        className="brand"
+        href="#home"
+        aria-label="Parvathirajan Natarajan, home and profile details"
+        aria-describedby="profile-card"
+      >
+        <img src="/pn-mark.svg" alt="" />
+      </a>
+      <aside className="profile-card" id="profile-card">
+        <img src="/pn-mark.svg" alt="" />
+        <div>
+          <strong>Parvathirajan Natarajan</strong>
+          <span>Manager · Technology leader</span>
+          <p>Building thoughtful cloud, data, and engineering experiences.</p>
+          <a href={linkedIn.url} target="_blank" rel="noreferrer">
+            View LinkedIn profile ↗
+          </a>
+        </div>
+      </aside>
+    </div>
+  );
+}
+
 function Vault() {
   const [unlocked, setUnlocked] = useState(
     () => sessionStorage.getItem("his-vault") === "open"
@@ -131,8 +161,8 @@ function Vault() {
     <section className="vault section" id="vault">
       <SectionTitle
         eyebrow="Private collection"
-        title="Parvathirajan’s Vault."
-        copy="A curated space for my notes, useful references, and downloadable resources. Read the guidance, then open the vault when you’re ready."
+        title="Parvathirajan's Vault."
+        copy="A curated space for my notes, useful references, and downloadable resources. Read the guidance, then open the vault when you're ready."
       />
       {!unlocked && !promptOpen ? (
         <div className="vault-gateway">
@@ -301,13 +331,7 @@ export function App() {
   return (
     <>
       <nav className="topbar" aria-label="Primary navigation">
-        <a
-          className="brand"
-          href="#home"
-          aria-label="Parvathirajan Natarajan, home"
-        >
-          PN
-        </a>
+        <ProfileMenu />
         <div className="nav-links">
           {nav.map((item) => (
             <a key={item} href={`#${item}`}>
@@ -391,7 +415,7 @@ export function App() {
           <div className="career-grid">
             <div className="career-intro reveal">
               <p>
-                From hands-on engineering to technology leadership, I’ve stayed
+                From hands-on engineering to technology leadership, I've stayed
                 close to the craft while expanding the scale of my impact.
               </p>
               <div className="metric">
@@ -415,6 +439,19 @@ export function App() {
                     <h3>{role.title}</h3>
                     <h4>{role.company}</h4>
                     <p>{role.description}</p>
+                    {role.responsibilities?.length > 0 && (
+                      <details className="responsibilities">
+                        <summary>
+                          <span>View responsibilities</span>
+                          <span aria-hidden="true">+</span>
+                        </summary>
+                        <ul>
+                          {role.responsibilities.map((responsibility) => (
+                            <li key={responsibility}>{responsibility}</li>
+                          ))}
+                        </ul>
+                      </details>
+                    )}
                   </div>
                 </article>
               ))}
@@ -458,7 +495,7 @@ export function App() {
         <Vault />
         <section className="contact section" id="contact">
           <div className="contact-card reveal">
-            <span>Let’s build what’s next.</span>
+            <span>Let's build what's next.</span>
             <h2>
               Good ideas deserve
               <br />

@@ -26,6 +26,7 @@ test("renders the updated portfolio and career details", () => {
   ).toHaveLength(2);
   expect(screen.getByText("05/2026 - present")).toBeInTheDocument();
   expect(screen.getAllByText("View project ↗")).toHaveLength(3);
+  expect(screen.getAllByText("View responsibilities")).toHaveLength(2);
 });
 
 test("reveals the passcode form only after opening Parvathirajan's Vault", () => {
@@ -108,4 +109,7 @@ test("provides navigation and social links", () => {
     "target",
     "_blank"
   );
+  expect(
+    screen.getByRole("link", { name: /View LinkedIn profile/i })
+  ).toHaveAttribute("href", "https://www.linkedin.com/in/parvathirajan-natarajan/");
 });

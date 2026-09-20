@@ -7,7 +7,9 @@ export default defineConfig({
     host: "localhost",
     port: 3000,
     strictPort: true,
-    open: true,
+    // Opening the site path asks the operating system to reuse the default
+    // browser, which normally creates a tab in the already-running browser.
+    open: "/",
   },
   build: { outDir: "build" },
   test: {

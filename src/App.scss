@@ -36,17 +36,82 @@ body {
   backdrop-filter: saturate(180%) blur(20px);
   border-bottom: 1px solid var(--line);
 }
+.profile-menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
 .brand {
   width: 34px;
   height: 34px;
   border-radius: 50%;
   display: grid;
   place-items: center;
-  background: var(--text);
-  color: var(--bg);
-  font-weight: 800;
   text-decoration: none;
-  letter-spacing: -1px;
+  overflow: hidden;
+}
+.brand img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.profile-card {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 0;
+  z-index: 2;
+  width: 310px;
+  display: flex;
+  gap: 14px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  color: var(--text);
+  background: color-mix(in srgb, var(--surface) 94%, transparent);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
+  backdrop-filter: saturate(180%) blur(18px);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition: opacity 0.2s, transform 0.2s;
+}
+.profile-menu:hover .profile-card,
+.profile-menu:focus-within .profile-card {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.profile-card > img {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  border-radius: 13px;
+}
+.profile-card strong,
+.profile-card span,
+.profile-card p,
+.profile-card a {
+  display: block;
+}
+.profile-card strong {
+  font-size: 14px;
+}
+.profile-card span {
+  margin-top: 3px;
+  color: var(--blue);
+  font-size: 12px;
+}
+.profile-card p {
+  margin: 10px 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
+.profile-card a {
+  color: var(--blue);
+  font-size: 13px;
+  font-weight: 650;
+  text-decoration: none;
 }
 .nav-links {
   display: flex;
@@ -379,6 +444,36 @@ body {
 .timeline-item p {
   color: var(--muted);
   line-height: 1.6;
+}
+.responsibilities {
+  margin-top: 18px;
+  border-top: 1px solid var(--line);
+}
+.responsibilities summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0 0;
+  color: var(--blue);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 650;
+  list-style: none;
+}
+.responsibilities summary::-webkit-details-marker {
+  display: none;
+}
+.responsibilities[open] summary span:last-child {
+  transform: rotate(45deg);
+}
+.responsibilities ul {
+  margin: 14px 0 0;
+  padding-left: 20px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+.responsibilities li + li {
+  margin-top: 8px;
 }
 .capabilities {
   background: #0b0b0d;
@@ -793,6 +888,10 @@ footer a {
 @media (max-width: 850px) {
   .nav-links {
     display: none;
+  }
+  .profile-card {
+    left: -6px;
+    width: min(310px, calc(100vw - 48px));
   }
   .hero {
     grid-template-columns: 1fr;

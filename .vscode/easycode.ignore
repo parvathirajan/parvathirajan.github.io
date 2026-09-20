@@ -2,7 +2,6 @@ node_modules/
 dist/
 vendor/
 cache/
-.*/
 *.min.*
 *.test.*
 *.spec.*

@@ -525,10 +525,10 @@ export function App() {
         </section>
       </main>
       <footer>
-        <div className="footer-rights">
-          <span>© {new Date().getFullYear()} Parvathirajan Natarajan</span>
-          <small>All rights belong to me :)</small>
-        </div>
+        <span className="footer-rights">
+          © {new Date().getFullYear()} Parvathirajan Natarajan · All rights
+          belong to me 😉
+        </span>
         <a href="#home">Back to top ↑</a>
       </footer>
     </>

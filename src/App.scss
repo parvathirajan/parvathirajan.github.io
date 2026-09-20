@@ -863,20 +863,18 @@ body {
 }
 footer {
   display: flex;
+  align-items: center;
+  gap: 18px;
   justify-content: space-between;
   padding: 35px max(28px, calc((100vw - 1180px) / 2));
   color: var(--muted);
   font-size: 13px;
 }
 .footer-rights {
-  display: grid;
-  gap: 4px;
-}
-.footer-rights small {
-  color: var(--muted);
-  font-size: 12px;
+  white-space: nowrap;
 }
 footer a {
+  flex: 0 0 auto;
   color: var(--text);
   text-decoration: none;
 }
@@ -968,6 +966,12 @@ footer a {
   }
   .contact-card br {
     display: none;
+  }
+  footer {
+    flex-wrap: wrap;
+  }
+  .footer-rights {
+    white-space: normal;
   }
 }
 @media (prefers-reduced-motion: reduce) {

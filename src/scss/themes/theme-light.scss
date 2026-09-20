@@ -1,8 +1,0 @@
-@use "sass:meta";
-
-body[data-theme="light"] {
-  @include meta.load-css("../light-slider");
-  .slider-tab {
-    background-color: #d7caaa;
-  }
-}

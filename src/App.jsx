@@ -120,11 +120,15 @@ function ProfileMenu() {
         aria-label="Parvathirajan Natarajan, home and profile details"
         aria-describedby="profile-card"
       >
-        <img src="/pn-mark.svg" alt="" />
+        <img src="/logo.png" alt="" />
       </a>
       <aside className="profile-card" id="profile-card">
-        <img src="/pn-mark.svg" alt="" />
-        <div>
+        <img
+          className="profile-card-image"
+          src="/profile.png"
+          alt="Illustrated portrait of Parvathirajan Natarajan"
+        />
+        <div className="profile-card-copy">
           <strong>Parvathirajan Natarajan</strong>
           <span>Manager · Technology leader</span>
           <p>Building thoughtful cloud, data, and engineering experiences.</p>

@@ -54,60 +54,68 @@ body {
   display: block;
   width: 100%;
   height: 100%;
+  object-fit: contain;
 }
 .profile-card {
   position: absolute;
-  top: calc(100% + 14px);
+  top: 100%;
   left: 0;
   z-index: 2;
-  width: 310px;
-  display: flex;
-  gap: 14px;
-  padding: 18px;
+  width: 520px;
+  min-height: 230px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   border: 1px solid var(--line);
   border-radius: 20px;
   color: var(--text);
   background: color-mix(in srgb, var(--surface) 94%, transparent);
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
   backdrop-filter: saturate(180%) blur(18px);
+  overflow: hidden;
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
-  transform: translateY(-6px);
-  transition: opacity 0.2s, transform 0.2s;
+  transform: translateY(-2px);
+  transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
 }
 .profile-menu:hover .profile-card,
 .profile-menu:focus-within .profile-card {
   opacity: 1;
+  visibility: visible;
   pointer-events: auto;
   transform: translateY(0);
 }
-.profile-card > img {
-  width: 42px;
-  height: 42px;
-  flex: 0 0 auto;
-  border-radius: 13px;
+.profile-card-image {
+  width: 100%;
+  height: 100%;
+  min-height: 230px;
+  object-fit: cover;
+  object-position: center 35%;
 }
-.profile-card strong,
-.profile-card span,
-.profile-card p,
-.profile-card a {
+.profile-card-copy {
+  padding: 24px;
+}
+.profile-card-copy strong,
+.profile-card-copy span,
+.profile-card-copy p,
+.profile-card-copy a {
   display: block;
 }
-.profile-card strong {
+.profile-card-copy strong {
   font-size: 14px;
 }
-.profile-card span {
+.profile-card-copy span {
   margin-top: 3px;
   color: var(--blue);
   font-size: 12px;
 }
-.profile-card p {
+.profile-card-copy p {
   margin: 10px 0;
   color: var(--muted);
   font-size: 13px;
   line-height: 1.4;
 }
-.profile-card a {
+.profile-card-copy a {
   color: var(--blue);
   font-size: 13px;
   font-weight: 650;
@@ -891,7 +899,8 @@ footer a {
   }
   .profile-card {
     left: -6px;
-    width: min(310px, calc(100vw - 48px));
+    width: min(520px, calc(100vw - 48px));
+    grid-template-columns: 0.85fr 1.15fr;
   }
   .hero {
     grid-template-columns: 1fr;

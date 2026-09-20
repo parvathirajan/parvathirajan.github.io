@@ -20,7 +20,8 @@ engineering leadership, and the work behind them.
 
 The site combines large editorial typography, interactive project stories,
 light and dark themes, a responsive animated hero, career history, skills, and
-**His Vault**—a folder-driven archive for links and downloadable files.
+**Parvathirajan's Vault**—a folder-driven archive for links and downloadable
+files.
 
 ## Run locally
 
@@ -34,7 +35,7 @@ yarn start
 The browser opens automatically at **http://localhost:3000**. The development
 server uses a strict port so another process cannot silently move it elsewhere.
 
-## His Vault
+## Parvathirajan's Vault
 
 Add one folder per blog topic inside [`data/`](data/README.md). The folder name
 is displayed as the topic title.
@@ -53,7 +54,7 @@ data/
   supported.
 - New content is discovered automatically by Vite during development and each
   production build.
-- The vault unlock code is `00444`.
+- The vault unlock code is `#####`.
 
 > **Privacy note:** the passcode provides a polished interface lock. GitHub
 > Pages and this repository are public, so committed files are publicly

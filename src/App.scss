@@ -449,6 +449,109 @@ body {
 .vault {
   background: var(--surface);
 }
+.vault-gateway {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.8fr) 1.2fr;
+  align-items: center;
+  gap: clamp(40px, 8vw, 100px);
+  padding: clamp(36px, 7vw, 76px);
+  border: 1px solid var(--line);
+  border-radius: 38px;
+  background:
+    radial-gradient(
+      circle at 16% 45%,
+      rgba(41, 151, 255, 0.18),
+      transparent 35%
+    ),
+    var(--bg);
+  overflow: hidden;
+}
+.vault-door {
+  width: min(100%, 340px);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  margin: auto;
+  border: 2px solid color-mix(in srgb, var(--line) 80%, var(--text));
+  border-radius: 50%;
+  background: linear-gradient(145deg, var(--surface), var(--bg));
+  box-shadow:
+    inset 0 0 0 18px var(--bg),
+    inset 0 0 0 20px var(--line),
+    0 28px 60px rgba(0, 0, 0, 0.15);
+}
+.vault-rim {
+  width: 62%;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--surface);
+}
+.vault-handle {
+  position: relative;
+  width: 42%;
+  aspect-ratio: 1;
+  border: 8px solid var(--text);
+  border-radius: 50%;
+}
+.vault-handle::before,
+.vault-handle::after,
+.vault-handle span {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--text);
+  transform: translate(-50%, -50%);
+}
+.vault-handle::after {
+  transform: translate(-50%, -50%) rotate(60deg);
+}
+.vault-handle span:first-child {
+  transform: translate(-50%, -50%) rotate(120deg);
+}
+.vault-handle span:nth-child(n + 2) {
+  display: none;
+}
+.vault-instructions > span {
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.vault-instructions h3 {
+  max-width: 610px;
+  margin: 15px 0 20px;
+  font-size: clamp(36px, 5vw, 60px);
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+.vault-instructions p {
+  max-width: 570px;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.6;
+}
+.vault-instructions button {
+  margin-top: 18px;
+  padding: 14px 22px;
+  border: 0;
+  border-radius: 999px;
+  color: #fff;
+  background: var(--blue);
+  font-weight: 650;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.vault-instructions button:hover {
+  transform: scale(1.03);
+}
 .vault-lock,
 .vault-empty {
   max-width: 720px;
@@ -482,6 +585,15 @@ body {
 .vault-empty p {
   color: var(--muted);
   line-height: 1.6;
+}
+.vault-back {
+  padding: 0;
+  border: 0;
+  color: var(--blue);
+  background: transparent;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 650;
 }
 .vault-lock label {
   display: block;
@@ -708,6 +820,13 @@ footer a {
   .education-grid,
   .vault-grid {
     grid-template-columns: 1fr;
+  }
+  .vault-gateway {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .vault-door {
+    width: 230px;
   }
   .project-1 {
     grid-column: auto;

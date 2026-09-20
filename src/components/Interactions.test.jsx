@@ -28,8 +28,15 @@ test("renders the updated portfolio and career details", () => {
   expect(screen.getAllByText("View project ↗")).toHaveLength(3);
 });
 
-test("unlocks and relocks His Vault with the configured passcode", () => {
+test("reveals the passcode form only after opening Parvathirajan's Vault", () => {
   render(<App />);
+  expect(screen.queryByLabelText("Passcode")).not.toBeInTheDocument();
+  expect(
+    screen.getByText(/personal archive, thoughtfully collected/i)
+  ).toBeInTheDocument();
+  fireEvent.click(screen.getByRole("button", { name: /Open the vault/ }));
+  expect(screen.getByLabelText("Passcode")).toBeInTheDocument();
+
   fireEvent.change(screen.getByLabelText("Passcode"), {
     target: { value: "12345" },
   });
@@ -44,7 +51,10 @@ test("unlocks and relocks His Vault with the configured passcode", () => {
     screen.getByText("Your first topic will appear here.")
   ).toBeInTheDocument();
   fireEvent.click(screen.getByRole("button", { name: "Lock vault" }));
-  expect(screen.getByLabelText("Passcode")).toBeInTheDocument();
+  expect(screen.queryByLabelText("Passcode")).not.toBeInTheDocument();
+  expect(
+    screen.getByRole("button", { name: /Open the vault/ })
+  ).toBeInTheDocument();
 });
 
 test("groups downloads and multiple links by topic folder", () => {

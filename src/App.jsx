@@ -111,6 +111,7 @@ function Vault() {
   const [unlocked, setUnlocked] = useState(
     () => sessionStorage.getItem("his-vault") === "open"
   );
+  const [promptOpen, setPromptOpen] = useState(false);
   const [passcode, setPasscode] = useState("");
   const [error, setError] = useState("");
 
@@ -130,16 +131,51 @@ function Vault() {
     <section className="vault section" id="vault">
       <SectionTitle
         eyebrow="Private collection"
-        title="His Vault."
-        copy="Notes, useful references, and files from my personal knowledge archive."
+        title="Parvathirajan’s Vault."
+        copy="A curated space for my notes, useful references, and downloadable resources. Read the guidance, then open the vault when you’re ready."
       />
-      {!unlocked ? (
+      {!unlocked && !promptOpen ? (
+        <div className="vault-gateway">
+          <div className="vault-door" aria-hidden="true">
+            <div className="vault-rim">
+              <div className="vault-handle">
+                <span />
+                <span />
+                <span />
+              </div>
+            </div>
+          </div>
+          <div className="vault-instructions">
+            <span>Before you enter</span>
+            <h3>A personal archive, thoughtfully collected.</h3>
+            <p>
+              Each topic contains selected reading links and files you can
+              download. Open the vault and enter the passcode to explore the
+              collection.
+            </p>
+            <button type="button" onClick={() => setPromptOpen(true)}>
+              Open the vault <b>→</b>
+            </button>
+          </div>
+        </div>
+      ) : !unlocked ? (
         <form className="vault-lock" onSubmit={unlock}>
           <div className="lock-symbol" aria-hidden="true">
             ⌁
           </div>
           <h3>Unlock the archive</h3>
           <p>Enter the five-digit passcode to continue.</p>
+          <button
+            className="vault-back"
+            type="button"
+            onClick={() => {
+              setPromptOpen(false);
+              setPasscode("");
+              setError("");
+            }}
+          >
+            ← Back to vault
+          </button>
           <label htmlFor="vault-passcode">Passcode</label>
           <div className="passcode-row">
             <input
@@ -175,6 +211,7 @@ function Vault() {
               onClick={() => {
                 sessionStorage.removeItem("his-vault");
                 setUnlocked(false);
+                setPromptOpen(false);
                 setPasscode("");
               }}
             >

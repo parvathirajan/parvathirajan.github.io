@@ -525,7 +525,10 @@ export function App() {
         </section>
       </main>
       <footer>
-        <span>© {new Date().getFullYear()} Parvathirajan Natarajan</span>
+        <span>
+          © {new Date().getFullYear()} Parvathirajan Natarajan. All rights
+          reserved.
+        </span>
         <a href="#home">Back to top ↑</a>
       </footer>
     </>

@@ -4,6 +4,9 @@ import "./App.scss";
 
 const nav = ["about", "work", "experience", "skills", "vault", "contact"];
 const heroChips = ["Python", "AWS", "Data", "GenAI"];
+const vaultAttemptKey = "his-vault-attempts";
+const vaultLockoutKey = "his-vault-locked-until";
+const vaultLockoutDuration = 5 * 60 * 1000;
 
 const linkFiles = import.meta.glob("/data/**/*.txt", {
   eager: true,
@@ -148,16 +151,74 @@ function Vault() {
   const [promptOpen, setPromptOpen] = useState(false);
   const [passcode, setPasscode] = useState("");
   const [error, setError] = useState("");
+  const [attempts, setAttempts] = useState(
+    () => Number(sessionStorage.getItem(vaultAttemptKey)) || 0
+  );
+  const [lockedUntil, setLockedUntil] = useState(() => {
+    const storedLockout = Number(sessionStorage.getItem(vaultLockoutKey));
+    if (storedLockout > Date.now()) return storedLockout;
+    sessionStorage.removeItem(vaultLockoutKey);
+    return 0;
+  });
+  const [currentTime, setCurrentTime] = useState(Date.now);
+  const isLocked = lockedUntil > currentTime;
+  const remainingSeconds = Math.max(0, Math.ceil((lockedUntil - currentTime) / 1000));
+  const remainingTime = `${Math.floor(remainingSeconds / 60)}:${String(
+    remainingSeconds % 60
+  ).padStart(2, "0")}`;
+
+  useEffect(() => {
+    if (!lockedUntil) return undefined;
+
+    const updateLockout = () => {
+      if (Date.now() >= lockedUntil) {
+        sessionStorage.removeItem(vaultLockoutKey);
+        sessionStorage.removeItem(vaultAttemptKey);
+        setLockedUntil(0);
+        setAttempts(0);
+        setError("");
+        return;
+      }
+      setCurrentTime(Date.now());
+    };
+
+    updateLockout();
+    const timer = window.setInterval(updateLockout, 1000);
+    return () => window.clearInterval(timer);
+  }, [lockedUntil]);
 
   function unlock(event) {
     event.preventDefault();
+    if (isLocked) return;
     if (passcode === "00444") {
       sessionStorage.setItem("his-vault", "open");
+      sessionStorage.removeItem(vaultAttemptKey);
+      sessionStorage.removeItem(vaultLockoutKey);
       setUnlocked(true);
+      setAttempts(0);
+      setLockedUntil(0);
       setError("");
       return;
     }
-    setError("That passcode doesn't match. Try again.");
+
+    const nextAttempts = attempts + 1;
+    if (nextAttempts >= 3) {
+      const nextLockout = Date.now() + vaultLockoutDuration;
+      sessionStorage.removeItem(vaultAttemptKey);
+      sessionStorage.setItem(vaultLockoutKey, String(nextLockout));
+      setAttempts(0);
+      setLockedUntil(nextLockout);
+      setCurrentTime(Date.now());
+      setError("Too many incorrect attempts. Try again in 5:00.");
+    } else {
+      sessionStorage.setItem(vaultAttemptKey, String(nextAttempts));
+      setAttempts(nextAttempts);
+      setError(
+        `That passcode doesn't match. ${3 - nextAttempts} attempt${
+          3 - nextAttempts === 1 ? "" : "s"
+        } remaining.`
+      );
+    }
     setPasscode("");
   }
 
@@ -198,7 +259,11 @@ function Vault() {
             ⌁
           </div>
           <h3>Unlock the archive</h3>
-          <p>Enter the five-digit passcode to continue.</p>
+          <p>
+            {isLocked
+              ? `Too many incorrect attempts. Try again in ${remainingTime}.`
+              : "Enter the five-digit passcode to continue."}
+          </p>
           <button
             className="vault-back"
             type="button"
@@ -214,16 +279,18 @@ function Vault() {
           <div className="passcode-row">
             <input
               id="vault-passcode"
+              type="password"
               value={passcode}
               onChange={(event) =>
                 setPasscode(event.target.value.replace(/\D/g, "").slice(0, 5))
               }
+              disabled={isLocked}
               inputMode="numeric"
               autoComplete="off"
               placeholder="•••••"
               aria-describedby={error ? "vault-error" : undefined}
             />
-            <button type="submit">
+            <button type="submit" disabled={isLocked}>
               Unlock <span>→</span>
             </button>
           </div>
@@ -313,6 +380,10 @@ function Vault() {
 
 export function App() {
   const [dark, setDark] = useState(false);
+  const [showBackToTop, setShowBackToTop] = useState(false);
+  const [vaultVisible, setVaultVisible] = useState(false);
+  const [scrollToVault, setScrollToVault] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
   useEffect(() => {
     document.body.dataset.theme = dark ? "dark" : "light";
     document.documentElement.style.colorScheme = dark ? "dark" : "light";
@@ -331,6 +402,59 @@ export function App() {
       .forEach((element) => observer.observe(element));
     return () => observer.disconnect();
   }, []);
+  useEffect(() => {
+    const updateBackToTopVisibility = () => {
+      setShowBackToTop(window.scrollY > 320);
+    };
+
+    updateBackToTopVisibility();
+    window.addEventListener("scroll", updateBackToTopVisibility, { passive: true });
+    return () => window.removeEventListener("scroll", updateBackToTopVisibility);
+  }, []);
+  useEffect(() => {
+    const updateActiveSection = () => {
+      const visibleSections = ["home", ...nav].filter(
+        (section) => section !== "vault" || vaultVisible
+      );
+      const currentSection = visibleSections.reduce((active, section) => {
+        const element = document.getElementById(section);
+        if (!element) return active;
+
+        const { top, bottom } = element.getBoundingClientRect();
+        return top <= 96 && bottom > 96 ? section : active;
+      }, null);
+      if (currentSection) setActiveSection(currentSection);
+    };
+
+    updateActiveSection();
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    window.addEventListener("resize", updateActiveSection);
+    return () => {
+      window.removeEventListener("scroll", updateActiveSection);
+      window.removeEventListener("resize", updateActiveSection);
+    };
+  }, [vaultVisible]);
+  useEffect(() => {
+    if (!scrollToVault || !vaultVisible) return;
+
+    document
+      .getElementById("vault")
+      ?.scrollIntoView?.({ behavior: "smooth", block: "start" });
+    setScrollToVault(false);
+  }, [scrollToVault, vaultVisible]);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleNavigation = (event, item) => {
+    if (item !== "vault") return;
+
+    event.preventDefault();
+    setVaultVisible(true);
+    setScrollToVault(true);
+    setActiveSection("vault");
+  };
 
   return (
     <>
@@ -338,7 +462,13 @@ export function App() {
         <ProfileMenu />
         <div className="nav-links">
           {nav.map((item) => (
-            <a key={item} href={`#${item}`}>
+            <a
+              key={item}
+              href={`#${item}`}
+              className={activeSection === item ? "is-active" : undefined}
+              aria-current={activeSection === item ? "location" : undefined}
+              onClick={(event) => handleNavigation(event, item)}
+            >
               {item}
             </a>
           ))}
@@ -496,7 +626,7 @@ export function App() {
             ))}
           </div>
         </section>
-        <Vault />
+        {vaultVisible && <Vault />}
         <section className="contact section" id="contact">
           <div className="contact-card reveal">
             <span>Let's build what's next.</span>
@@ -524,12 +654,23 @@ export function App() {
           </div>
         </section>
       </main>
+      <button
+        className={`back-to-top-mobile${showBackToTop ? " is-visible" : ""}`}
+        type="button"
+        onClick={scrollToTop}
+        aria-label="Back to top"
+      >
+        <span aria-hidden="true">↑</span>
+        Top
+      </button>
       <footer>
         <span className="footer-rights">
           © {new Date().getFullYear()} Parvathirajan Natarajan · All rights
           belong to me 😉
         </span>
-        <a href="#home">Back to top ↑</a>
+        <a className="back-to-top-footer" href="#home">
+          Back to top ↑
+        </a>
       </footer>
     </>
   );

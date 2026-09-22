@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
+import { vi } from "vitest";
 import { App, buildVaultTopics } from "../App";
 
 class IntersectionObserverMock {
@@ -33,6 +34,10 @@ test("reveals the passcode form only after opening Parvathirajan's Vault", () =>
   render(<App />);
   expect(screen.queryByLabelText("Passcode")).not.toBeInTheDocument();
   expect(
+    screen.queryByRole("heading", { name: "Parvathirajan's Vault." })
+  ).not.toBeInTheDocument();
+  fireEvent.click(screen.getByRole("link", { name: "vault" }));
+  expect(
     screen.getByText(/personal archive, thoughtfully collected/i)
   ).toBeInTheDocument();
   fireEvent.click(screen.getByRole("button", { name: /Open the vault/ }));
@@ -56,6 +61,43 @@ test("reveals the passcode form only after opening Parvathirajan's Vault", () =>
   expect(
     screen.getByRole("button", { name: /Open the vault/ })
   ).toBeInTheDocument();
+});
+
+test("locks the vault for five minutes after three incorrect passcodes", () => {
+  render(<App />);
+  fireEvent.click(screen.getByRole("link", { name: "vault" }));
+  fireEvent.click(screen.getByRole("button", { name: /Open the vault/ }));
+
+  for (let attempt = 0; attempt < 3; attempt += 1) {
+    fireEvent.change(screen.getByLabelText("Passcode"), {
+      target: { value: "12345" },
+    });
+    fireEvent.click(screen.getByRole("button", { name: /Unlock/ }));
+  }
+
+  expect(screen.getByRole("alert")).toHaveTextContent(
+    /too many incorrect attempts/i
+  );
+  expect(screen.getByLabelText("Passcode")).toBeDisabled();
+  expect(screen.getByRole("button", { name: /Unlock/ })).toBeDisabled();
+  expect(Number(sessionStorage.getItem("his-vault-locked-until"))).toBeGreaterThan(
+    Date.now()
+  );
+});
+
+test("masks the vault passcode and marks the active navigation section", () => {
+  render(<App />);
+  expect(screen.getByRole("link", { name: "work" })).not.toHaveAttribute(
+    "aria-current"
+  );
+
+  fireEvent.click(screen.getByRole("link", { name: "vault" }));
+  expect(screen.getByRole("link", { name: "vault" })).toHaveAttribute(
+    "aria-current",
+    "location"
+  );
+  fireEvent.click(screen.getByRole("button", { name: /Open the vault/ }));
+  expect(screen.getByLabelText("Passcode")).toHaveAttribute("type", "password");
 });
 
 test("groups downloads and multiple links by topic folder", () => {
@@ -112,4 +154,16 @@ test("provides navigation and social links", () => {
   expect(
     screen.getByRole("link", { name: /View LinkedIn profile/i })
   ).toHaveAttribute("href", "https://www.linkedin.com/in/parvathirajan-natarajan/");
+});
+
+test("shows a mobile-friendly back-to-top action after scrolling", () => {
+  Object.defineProperty(window, "scrollY", { configurable: true, value: 400 });
+  window.scrollTo = vi.fn();
+
+  render(<App />);
+  const backToTop = screen.getByRole("button", { name: "Back to top" });
+  expect(backToTop).toHaveClass("is-visible");
+
+  fireEvent.click(backToTop);
+  expect(window.scrollTo).toHaveBeenCalledWith({ top: 0, behavior: "smooth" });
 });

@@ -1,7 +1,20 @@
-# GenAI Hands-on: Business Challenge
+# Day 1 — GenAI Business Challenge
 
-This exercise uses 20 café customer-review records to practise responsible GenAI-assisted business analysis. The review data includes customer feedback, ratings, visit context, and identifying details that must be protected before it is used with an AI tool.
+Use GenAI responsibly to help a café recover customer confidence and improve its business decisions.
 
-The challenge is to diagnose the café's performance issues, prioritise the most important causes, and identify further data needed for confident decisions. Students create a privacy-safe version of the review data, classify feedback themes, and produce a short management summary. They then use their findings to propose a 30-day marketing plan within a ₹50,000 budget, develop a student-focused campaign, compare management options, and prepare a recovery pitch.
+## Case at a glance
 
-The work also covers prompt engineering, hallucination awareness, and human verification. Each recommendation should state its assumptions, protect personal data, avoid unsupported claims, and document the prompts and checks used.
+- Analyse 20 customer-review records covering ratings, feedback, visit context, and personal data.
+- Identify the biggest experience and value-for-money issues affecting the café.
+- Turn evidence into a practical 30-day recovery plan.
+
+## What you will deliver
+
+1. A business diagnosis with root causes, priorities, assumptions, and data gaps.
+2. A privacy-safe review dataset and clear rules for handling personal information.
+3. Feedback themes, a management summary, a ₹50,000 marketing allocation, and a student-focused campaign.
+4. A comparison of management options and a 3–5 minute recovery pitch.
+
+## Responsible AI focus
+
+Document the prompts you use, check outputs against the source data, and identify claims that need human verification. Recommendations must protect customer privacy, avoid misleading statements, and clearly distinguish evidence from assumptions.

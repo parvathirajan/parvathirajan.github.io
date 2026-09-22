@@ -11,7 +11,14 @@ export default defineConfig({
     // browser, which normally creates a tab in the already-running browser.
     open: "/",
   },
-  build: { outDir: "build" },
+  build: {
+    outDir: "build",
+    rollupOptions: {
+      output: {
+        assetFileNames: "assets/[name][extname]",
+      },
+    },
+  },
   test: {
     environment: "jsdom",
     globals: true,

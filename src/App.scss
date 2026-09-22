@@ -556,15 +556,17 @@ body {
 .vault {
   background: var(--surface);
   scroll-margin-top: 58px;
-  padding-top: 84px;
-  padding-bottom: 84px;
+  padding: 48px max(28px, calc((100vw - 1180px) / 2));
+}
+.vault .section-heading {
+  margin-bottom: 36px;
 }
 .vault-gateway {
   display: grid;
   grid-template-columns: minmax(280px, 0.8fr) 1.2fr;
   align-items: center;
-  gap: clamp(40px, 8vw, 100px);
-  padding: clamp(36px, 7vw, 76px);
+  gap: clamp(28px, 5vw, 64px);
+  padding: clamp(28px, 5vw, 56px);
   border: 1px solid var(--line);
   border-radius: 38px;
   background:
@@ -769,11 +771,14 @@ body {
 }
 .vault-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   gap: 18px;
 }
 .vault-topic {
-  padding: 34px;
+  display: grid;
+  grid-template-columns: minmax(260px, 1.25fr) repeat(2, minmax(180px, 0.8fr));
+  gap: 28px;
+  padding: 30px;
   border-radius: 28px;
   color: #f5f5f7;
   background: #0b0b0d;
@@ -784,18 +789,35 @@ body {
   letter-spacing: 0.08em;
 }
 .vault-topic h3 {
-  margin: 18px 0 30px;
-  font-size: 32px;
+  margin: 14px 0 18px;
+  font-size: 28px;
   letter-spacing: -0.035em;
 }
 .vault-overview {
-  margin: -10px 0 26px;
   color: rgba(245, 245, 247, 0.75);
   line-height: 1.6;
-  white-space: pre-line;
+}
+.vault-overview h4 {
+  margin: 20px 0 8px;
+  color: #f5f5f7;
+  font-size: 14px;
+}
+.vault-overview h4:first-child {
+  margin-top: 0;
+}
+.vault-overview p {
+  margin: 0 0 14px;
+}
+.vault-overview ul,
+.vault-overview ol {
+  margin: 0 0 16px;
+  padding-left: 18px;
+}
+.vault-overview li + li {
+  margin-top: 6px;
 }
 .vault-topic-section + .vault-topic-section {
-  margin-top: 22px;
+  margin-top: 0;
 }
 .vault-topic-section h4 {
   margin: 0 0 9px;
@@ -973,8 +995,7 @@ footer a {
     padding: 90px 24px;
   }
   .vault {
-    padding-top: 64px;
-    padding-bottom: 64px;
+    padding: 36px 24px;
   }
   .project-grid,
   .career-grid,
@@ -983,12 +1004,18 @@ footer a {
   .vault-grid {
     grid-template-columns: 1fr;
   }
+  .vault-topic {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 26px;
+  }
   .vault-gateway {
     grid-template-columns: 1fr;
     text-align: center;
+    padding: 28px 20px;
   }
   .vault-door {
-    width: 230px;
+    width: 180px;
   }
   .project-1 {
     grid-column: auto;

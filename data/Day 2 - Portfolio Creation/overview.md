@@ -1,7 +1,20 @@
-# GenAI Hands-on: Portfolio Website Challenge
+# Day 2 — Portfolio Website Challenge
 
-This exercise guides students through creating a professional, privacy-conscious portfolio website with GenAI support. The supplied profile dataset contains 20 fields spanning identity, contact details, education, skills, projects, and interests; sensitive details must be removed or masked before being included in an AI prompt or published online.
+Create a professional, privacy-conscious portfolio website with GenAI as a design and development assistant.
 
-Students define the website's audience, purpose, required sections, and design goals, then prepare a strong prompt using the cleaned profile data. The final deliverable is a complete static HTML page with embedded CSS that opens locally without a server, account, API, or installation.
+## Case at a glance
 
-The portfolio should present the appropriate About, Education, Skills, Project or Experience, Achievement or Interest, and Contact sections, while keeping sensitive information out. The challenge also requires mobile-friendly layout improvements, browser testing, review of AI-generated claims and code, and a short demonstration of the finished website, privacy choices, and human verification decisions.
+- Review a 20-field profile dataset spanning identity, contact details, education, skills, projects, and interests.
+- Remove or mask sensitive data before it reaches an AI prompt or a public website.
+- Build a polished portfolio that communicates a clear professional story.
+
+## What you will deliver
+
+1. The portfolio purpose, audience, minimum sections, and design goals.
+2. A cleaned profile dataset and a strong, structured GenAI prompt.
+3. One complete static HTML file with embedded CSS that opens locally without a server, login, API, or installation.
+4. A tested, mobile-friendly website plus a short 3–5 minute demonstration.
+
+## Responsible AI focus
+
+Review every AI-generated claim and code suggestion before publishing. Record privacy, hallucination, and copyright risks, explain the checks you performed, and note at least one AI suggestion you chose not to use.

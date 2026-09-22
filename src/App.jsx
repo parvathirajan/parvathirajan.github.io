@@ -28,6 +28,43 @@ function titleFromFile(filename) {
   return filename.replace(/\.[^.]+$/, "").replace(/[-_]+/g, " ");
 }
 
+function MarkdownOverview({ content }) {
+  return (
+    <div className="vault-overview">
+      {content
+        .trim()
+        .split(/\n\s*\n/)
+        .map((block, index) => {
+          const lines = block.split("\n").filter(Boolean);
+          const heading = block.match(/^#{1,3}\s+(.+)$/);
+          const bulletList = lines.every((line) => /^[-*]\s+/.test(line));
+          const orderedList = lines.every((line) => /^\d+\.\s+/.test(line));
+
+          if (heading) return <h4 key={index}>{heading[1]}</h4>;
+          if (bulletList) {
+            return (
+              <ul key={index}>
+                {lines.map((line) => (
+                  <li key={line}>{line.replace(/^[-*]\s+/, "")}</li>
+                ))}
+              </ul>
+            );
+          }
+          if (orderedList) {
+            return (
+              <ol key={index}>
+                {lines.map((line) => (
+                  <li key={line}>{line.replace(/^\d+\.\s+/, "")}</li>
+                ))}
+              </ol>
+            );
+          }
+          return <p key={index}>{lines.join(" ")}</p>;
+        })}
+    </div>
+  );
+}
+
 function isHiddenVaultPath(path) {
   return path.split("/").some((part) => /^hide/i.test(part));
 }
@@ -358,13 +395,15 @@ function Vault() {
             <div className="vault-grid">
               {vaultTopics.map((topic, index) => (
                 <article className="vault-topic" key={topic.name}>
-                  <div className="topic-number">
-                    {String(index + 1).padStart(2, "0")}
+                  <div className="vault-topic-overview">
+                    <div className="topic-number">
+                      {String(index + 1).padStart(2, "0")}
+                    </div>
+                    <h3>{topic.name}</h3>
+                    {topic.overview && (
+                      <MarkdownOverview content={topic.overview} />
+                    )}
                   </div>
-                  <h3>{topic.name}</h3>
-                  {topic.overview && (
-                    <p className="vault-overview">{topic.overview}</p>
-                  )}
                   {topic.files.length > 0 && (
                     <div className="vault-topic-section">
                       <h4>Downloads</h4>

@@ -404,42 +404,46 @@ function Vault() {
                       <MarkdownOverview content={topic.overview} />
                     )}
                   </div>
-                  {topic.files.length > 0 && (
-                    <div className="vault-topic-section">
-                      <h4>Downloads</h4>
-                      <div className="vault-files">
-                        {topic.files.map((file) => (
-                          <a
-                            href={file.url}
-                            download={file.filename}
-                            key={file.filename}
-                          >
-                            <span>
-                              <small>Download</small>
-                              {file.name}
-                            </span>
-                            <b>↓</b>
-                          </a>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                  {topic.links.length > 0 && (
-                    <div className="vault-topic-section">
-                      <h4>References</h4>
-                      <div className="vault-links">
-                        {topic.links.map((link, linkIndex) => (
-                          <a
-                            href={link.url}
-                            target="_blank"
-                            rel="noreferrer"
-                            key={`${link.url}-${linkIndex}`}
-                          >
-                            <span>Visit {link.label}</span>
-                            <b>↗</b>
-                          </a>
-                        ))}
-                      </div>
+                  {(topic.files.length > 0 || topic.links.length > 0) && (
+                    <div className="vault-topic-resources">
+                      {topic.files.length > 0 && (
+                        <div className="vault-topic-section">
+                          <h4>Downloads</h4>
+                          <div className="vault-files">
+                            {topic.files.map((file) => (
+                              <a
+                                href={file.url}
+                                download={file.filename}
+                                key={file.filename}
+                              >
+                                <span>
+                                  <small>Download</small>
+                                  {file.name}
+                                </span>
+                                <b>↓</b>
+                              </a>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                      {topic.links.length > 0 && (
+                        <div className="vault-topic-section">
+                          <h4>References</h4>
+                          <div className="vault-links">
+                            {topic.links.map((link, linkIndex) => (
+                              <a
+                                href={link.url}
+                                target="_blank"
+                                rel="noreferrer"
+                                key={`${link.url}-${linkIndex}`}
+                              >
+                                <span>Visit {link.label}</span>
+                                <b>↗</b>
+                              </a>
+                            ))}
+                          </div>
+                        </div>
+                      )}
                     </div>
                   )}
                 </article>

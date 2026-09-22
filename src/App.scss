@@ -775,9 +775,8 @@ body {
   gap: 18px;
 }
 .vault-topic {
-  display: grid;
-  grid-template-columns: minmax(260px, 1.25fr) repeat(2, minmax(180px, 0.8fr));
-  gap: 28px;
+  display: flex;
+  flex-direction: column;
   padding: 30px;
   border-radius: 28px;
   color: #f5f5f7;
@@ -816,8 +815,13 @@ body {
 .vault-overview li + li {
   margin-top: 6px;
 }
-.vault-topic-section + .vault-topic-section {
-  margin-top: 0;
+.vault-topic-resources {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  margin-top: auto;
+  padding-top: 26px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 .vault-topic-section h4 {
   margin: 0 0 9px;
@@ -1005,9 +1009,11 @@ footer a {
     grid-template-columns: 1fr;
   }
   .vault-topic {
+    padding: 26px;
+  }
+  .vault-topic-resources {
     grid-template-columns: 1fr;
     gap: 24px;
-    padding: 26px;
   }
   .vault-gateway {
     grid-template-columns: 1fr;

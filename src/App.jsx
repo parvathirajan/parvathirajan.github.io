@@ -186,6 +186,20 @@ function Vault() {
     const timer = window.setInterval(updateLockout, 1000);
     return () => window.clearInterval(timer);
   }, [lockedUntil]);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) =>
+        entries.forEach(
+          (entry) =>
+            entry.isIntersecting && entry.target.classList.add("visible")
+        ),
+      { threshold: 0.12 }
+    );
+    document
+      .querySelectorAll("#vault .reveal")
+      .forEach((element) => observer.observe(element));
+    return () => observer.disconnect();
+  }, []);
 
   function unlock(event) {
     event.preventDefault();
@@ -381,6 +395,7 @@ function Vault() {
 export function App() {
   const [dark, setDark] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const [footerVisible, setFooterVisible] = useState(false);
   const [vaultVisible, setVaultVisible] = useState(false);
   const [scrollToVault, setScrollToVault] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
@@ -400,6 +415,17 @@ export function App() {
     document
       .querySelectorAll(".reveal")
       .forEach((element) => observer.observe(element));
+    return () => observer.disconnect();
+  }, []);
+  useEffect(() => {
+    const footer = document.querySelector("footer");
+    if (!footer) return undefined;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setFooterVisible(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    observer.observe(footer);
     return () => observer.disconnect();
   }, []);
   useEffect(() => {
@@ -655,7 +681,9 @@ export function App() {
         </section>
       </main>
       <button
-        className={`back-to-top-mobile${showBackToTop ? " is-visible" : ""}`}
+        className={`back-to-top-mobile${
+          showBackToTop && !footerVisible ? " is-visible" : ""
+        }`}
         type="button"
         onClick={scrollToTop}
         aria-label="Back to top"

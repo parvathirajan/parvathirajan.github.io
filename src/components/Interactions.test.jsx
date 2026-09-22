@@ -100,6 +100,16 @@ test("masks the vault passcode and marks the active navigation section", () => {
   expect(screen.getByLabelText("Passcode")).toHaveAttribute("type", "password");
 });
 
+test("reveals the vault heading after the vault section is opened", () => {
+  render(<App />);
+  fireEvent.click(screen.getByRole("link", { name: "vault" }));
+  expect(
+    screen
+      .getByRole("heading", { name: "Parvathirajan's Vault." })
+      .closest(".reveal")
+  ).toHaveClass("visible");
+});
+
 test("groups downloads and multiple links by topic folder", () => {
   const topics = buildVaultTopics(
     {

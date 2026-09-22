@@ -555,6 +555,9 @@ body {
 }
 .vault {
   background: var(--surface);
+  scroll-margin-top: 58px;
+  padding-top: 84px;
+  padding-bottom: 84px;
 }
 .vault-gateway {
   display: grid;
@@ -954,6 +957,10 @@ footer a {
   }
   .section {
     padding: 90px 24px;
+  }
+  .vault {
+    padding-top: 64px;
+    padding-bottom: 64px;
   }
   .project-grid,
   .career-grid,

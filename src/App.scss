@@ -788,13 +788,27 @@ body {
   font-size: 32px;
   letter-spacing: -0.035em;
 }
+.vault-overview {
+  margin: -10px 0 26px;
+  color: rgba(245, 245, 247, 0.75);
+  line-height: 1.6;
+  white-space: pre-line;
+}
+.vault-topic-section + .vault-topic-section {
+  margin-top: 22px;
+}
+.vault-topic-section h4 {
+  margin: 0 0 9px;
+  color: #2997ff;
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
 .vault-links,
 .vault-files {
   display: grid;
   gap: 9px;
-}
-.vault-files {
-  margin-top: 18px;
 }
 .vault-links a,
 .vault-files a {

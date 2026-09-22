@@ -13,6 +13,11 @@ const linkFiles = import.meta.glob("/data/**/*.txt", {
   query: "?raw",
   import: "default",
 });
+const overviewFiles = import.meta.glob("/data/**/*.{md,MD}", {
+  eager: true,
+  query: "?raw",
+  import: "default",
+});
 const downloadableFiles = import.meta.glob("/data/**/*", {
   eager: true,
   query: "?url",
@@ -23,14 +28,23 @@ function titleFromFile(filename) {
   return filename.replace(/\.[^.]+$/, "").replace(/[-_]+/g, " ");
 }
 
-export function buildVaultTopics(links = linkFiles, files = downloadableFiles) {
+function isHiddenVaultPath(path) {
+  return path.split("/").some((part) => /^hide/i.test(part));
+}
+
+export function buildVaultTopics(
+  links = linkFiles,
+  files = downloadableFiles,
+  overviews = overviewFiles
+) {
   const topics = new Map();
   const topicFor = (path) => {
+    if (isHiddenVaultPath(path)) return null;
     const parts = path.split("/");
     const topic = parts[2];
     if (!topic || parts.length < 4) return null;
     if (!topics.has(topic)) {
-      topics.set(topic, { name: topic, links: [], files: [] });
+      topics.set(topic, { name: topic, overview: "", links: [], files: [] });
     }
     return topics.get(topic);
   };
@@ -54,8 +68,15 @@ export function buildVaultTopics(links = linkFiles, files = downloadableFiles) {
       });
   });
 
+  Object.entries(overviews).forEach(([path, contents]) => {
+    const topic = topicFor(path);
+    const overview = String(contents).trim();
+    if (!topic || !overview || topic.overview) return;
+    topic.overview = overview;
+  });
+
   Object.entries(files).forEach(([path, url]) => {
-    if (/\.txt$/i.test(path)) return;
+    if (/\.(txt|md)$/i.test(path)) return;
     const topic = topicFor(path);
     if (!topic) return;
     const filename = path.split("/").at(-1);
@@ -63,7 +84,7 @@ export function buildVaultTopics(links = linkFiles, files = downloadableFiles) {
   });
 
   return [...topics.values()]
-    .filter((topic) => topic.links.length || topic.files.length)
+    .filter((topic) => topic.overview || topic.links.length || topic.files.length)
     .sort((a, b) => a.name.localeCompare(b.name));
 }
 
@@ -341,36 +362,45 @@ function Vault() {
                     {String(index + 1).padStart(2, "0")}
                   </div>
                   <h3>{topic.name}</h3>
-                  {topic.links.length > 0 && (
-                    <div className="vault-links">
-                      {topic.links.map((link, linkIndex) => (
-                        <a
-                          href={link.url}
-                          target="_blank"
-                          rel="noreferrer"
-                          key={`${link.url}-${linkIndex}`}
-                        >
-                          <span>Visit {link.label}</span>
-                          <b>↗</b>
-                        </a>
-                      ))}
-                    </div>
+                  {topic.overview && (
+                    <p className="vault-overview">{topic.overview}</p>
                   )}
                   {topic.files.length > 0 && (
-                    <div className="vault-files">
-                      {topic.files.map((file) => (
-                        <a
-                          href={file.url}
-                          download={file.filename}
-                          key={file.filename}
-                        >
-                          <span>
-                            <small>Download</small>
-                            {file.name}
-                          </span>
-                          <b>↓</b>
-                        </a>
-                      ))}
+                    <div className="vault-topic-section">
+                      <h4>Downloads</h4>
+                      <div className="vault-files">
+                        {topic.files.map((file) => (
+                          <a
+                            href={file.url}
+                            download={file.filename}
+                            key={file.filename}
+                          >
+                            <span>
+                              <small>Download</small>
+                              {file.name}
+                            </span>
+                            <b>↓</b>
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  {topic.links.length > 0 && (
+                    <div className="vault-topic-section">
+                      <h4>References</h4>
+                      <div className="vault-links">
+                        {topic.links.map((link, linkIndex) => (
+                          <a
+                            href={link.url}
+                            target="_blank"
+                            rel="noreferrer"
+                            key={`${link.url}-${linkIndex}`}
+                          >
+                            <span>Visit {link.label}</span>
+                            <b>↗</b>
+                          </a>
+                        ))}
+                      </div>
                     </div>
                   )}
                 </article>

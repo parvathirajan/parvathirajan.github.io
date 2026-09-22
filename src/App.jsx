@@ -299,7 +299,11 @@ function Vault() {
       <SectionTitle
         eyebrow="Private collection"
         title="Parvathirajan's Vault."
-        copy="A curated space for my notes, useful references, and downloadable resources. Read the guidance, then open the vault when you're ready."
+        copy={
+          unlocked
+            ? undefined
+            : "A curated space for my notes, useful references, and downloadable resources. Read the guidance, then open the vault when you're ready."
+        }
       />
       {!unlocked && !promptOpen ? (
         <div className="vault-gateway">

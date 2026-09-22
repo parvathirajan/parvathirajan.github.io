@@ -57,6 +57,9 @@ test("reveals the passcode form only after opening Parvathirajan's Vault", () =>
     screen.getByRole("heading", { name: "Day 1 - GenAI Hands-on" })
   ).toBeInTheDocument();
   expect(screen.getByText(/Analyse 20 customer-review records/i)).toBeInTheDocument();
+  expect(
+    screen.queryByText(/Read the guidance, then open the vault/i)
+  ).not.toBeInTheDocument();
   fireEvent.click(screen.getByRole("button", { name: "Lock vault" }));
   expect(screen.queryByLabelText("Passcode")).not.toBeInTheDocument();
   expect(

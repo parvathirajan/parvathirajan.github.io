@@ -817,8 +817,7 @@ body {
 }
 .vault-topic-resources {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 28px;
+  gap: 22px;
   margin-top: auto;
   padding-top: 26px;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
@@ -834,6 +833,7 @@ body {
 .vault-links,
 .vault-files {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
   gap: 9px;
 }
 .vault-links a,
@@ -1012,7 +1012,6 @@ footer a {
     padding: 26px;
   }
   .vault-topic-resources {
-    grid-template-columns: 1fr;
     gap: 24px;
   }
   .vault-gateway {

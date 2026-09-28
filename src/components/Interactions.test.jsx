@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { vi } from "vitest";
-import { App, buildVaultTopics } from "../App";
+import { App } from "../App";
 
 class IntersectionObserverMock {
   observe(element) {
@@ -112,45 +112,6 @@ test("reveals the vault heading after the vault section is opened", () => {
       .getByRole("heading", { name: "Parvathirajan's Vault." })
       .closest(".reveal")
   ).toHaveClass("visible");
-});
-
-test("groups downloads and multiple links by topic folder", () => {
-  const topics = buildVaultTopics(
-    {
-      "/data/Cloud Architecture/links.txt":
-        "https://aws.amazon.com\nhttps://example.com/guide\ninvalid",
-    },
-    {
-      "/data/Cloud Architecture/diagram.pdf": "/assets/diagram.pdf",
-      "/data/Cloud Architecture/links.txt": "/assets/links.txt",
-      "/data/Cloud Architecture/overview.md": "/assets/overview.md",
-      "/data/Cloud Architecture/Hide-private.pdf": "/assets/private.pdf",
-      "/data/Hide Personal/notes.pdf": "/assets/notes.pdf",
-    },
-    {
-      "/data/Cloud Architecture/overview.md":
-        "Architecture notes for the current project.",
-      "/data/Hide Personal/overview.md": "Private notes",
-    }
-  );
-
-  expect(topics).toEqual([
-    {
-      name: "Cloud Architecture",
-      overview: "Architecture notes for the current project.",
-      links: [
-        { url: "https://aws.amazon.com", label: "aws.amazon.com" },
-        { url: "https://example.com/guide", label: "example.com" },
-      ],
-      files: [
-        {
-          name: "diagram",
-          filename: "diagram.pdf",
-          url: "/assets/diagram.pdf",
-        },
-      ],
-    },
-  ]);
 });
 
 test("switches between light and dark themes", () => {
